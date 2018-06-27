@@ -14,11 +14,11 @@
   },
   "config": {
     "deployToGit": {
-      "repository": "git@github.com:Nona-Creative/nona-creative.github.io.git",
+      "repository": "git@github.com:Nona-Creative/ETHPrize.git",
       "branch": "master",
       "folder": "out",
       "script": "npm run prod-build",
-      "commit": "Release the Kraken!",
+      "commit": "Deploy github pages",
       "user": {
         "email": "deploy@nonacreative.com",
         "name": "deploy"
