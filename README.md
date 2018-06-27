@@ -1,4 +1,4 @@
-# nona-site
+# ETHPRize
 ETH single page React website
 
 ## Setting up
