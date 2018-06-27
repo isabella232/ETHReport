@@ -41248,7 +41248,7 @@ function (_Document) {
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
         rel: "stylesheet",
-        href: "../../_next/static/style.css",
+        href: "_next/static/style.css",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 10
@@ -41360,7 +41360,7 @@ var _jsxFileName = "/Users/st/react/ETHPrize/pages/index.js";
 
 var _default = function _default() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-    className: "page-wrapper",
+    className: "home page-wrapper",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 5
@@ -41447,7 +41447,7 @@ var _default = function _default() {
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-            injectCss(link, link.href.split("?")[0] + "?unix=1530104896431");
+            injectCss(link, link.href.split("?")[0] + "?unix=1530106862034");
           });
       }
     }
