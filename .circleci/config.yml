@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.10.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-cache
+      - run:
+          name: Install npm packages
+          command: yarn --pure-lockfile
+      - save_cache:
+          key: yarn-cache
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Linting
+          command: npm run lint
+  deploy_to_staging:
+    docker:
+      - image: circleci/node:7.10.0
+    steps:
+      - checkout
+      - run: yarn
+      - run:
+          name: deploy to staging
+          command: npm run deploy
+workflows:
+  version: 2
+  build_and_deploy_to_staging:
+    jobs:
+      - build
+      - deploy_to_staging:
+          filters:
+            branches:
+              only: develop

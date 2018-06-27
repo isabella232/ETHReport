@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "airbnb"],
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-console": "error",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+  },
+  "globals": {
+    "fetch": false,
+    "it": false,
+    "describe": false,
+    "expect": false,
+    "afterEach": false,
+    "jest": false
+  }
+}

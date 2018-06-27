@@ -1,0 +1,31 @@
+@import './assets/styles/base/reset.scss';
+@import './assets/styles/base/fonts.scss';
+@import './assets/styles/base/type.scss';
+@import './assets/styles/base/forms.scss';
+@import './assets/styles/base/buttons.scss';
+@import './assets/styles/base/slick-carousel.scss';
+@import './assets/styles/global.scss';
+
+.page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    font-size: calculateRem(24);
+    line-height: 1;
+    border: 1px solid;
+    padding: calculateRem(20);
+
+    @media (min-width: $tablet) {
+      font-size: calculateRem(40);
+    }
+
+    strong {
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import './assets/styles/global.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $primary-font;
+  font-size: calculateRem($body-font-size);
+  line-height: calculateRem($body-line-height);
+  color: $text-color;
+}
