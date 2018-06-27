@@ -1,4 +1,4 @@
-# ETHPRize
+# ETHPrize
 ETH single page React website
 
 ## Setting up
