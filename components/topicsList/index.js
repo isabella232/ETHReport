@@ -7,7 +7,7 @@ export default () => (
     <h4>Topics</h4>
     <ul>
       {
-        Data.map(topic => <li key={topic}><span>{ `${topic}`}</span></li>)
+        Data.map(topic => <li key={topic}><span>{ topic }</span></li>)
       }
     </ul>
   </div>

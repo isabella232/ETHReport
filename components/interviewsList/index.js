@@ -21,7 +21,7 @@ class InterviewsList extends React.Component {
     return (
       <div className="interviews-list-wrap">
         <div className="mob-interviews-link">
-          <span role="button" tabIndex="0" onClick={this.toggleInterviewsListModal}>Interviews (100)</span> {/* eslint-disable-line */}
+          <span role="button" tabIndex="0" onClick={this.toggleInterviewsListModal}>Interviews ({ Data.length})</span> {/* eslint-disable-line */}
           <span role="button" tabIndex="0" onClick={this.toggleInterviewsListModal}>View</span> {/* eslint-disable-line */}
         </div>
         <Modal
