@@ -12,20 +12,32 @@ class Resources extends React.Component {
 
     this.state = {
       isWordCloudModalOpen: false,
-      activeSlide: 1,
+      activeSlide: 0,
     };
-    this.toggleWordCloudModal = this.toggleWordCloudModal.bind(this);
+    this.openWordCloudModal = this.openWordCloudModal.bind(this);
+    this.closeWordCloudModal = this.closeWordCloudModal.bind(this);
   }
 
-  toggleWordCloudModal(event) {
-    const { isWordCloudModalOpen } = this.state;
-    const clickedIndex = event.target.dataset.index;
+  openWordCloudModal(event) {
+    /*
+    /* Check if clicked element is a child and doesn't have a data-index,
+    /* then go get data-index from the parentNode
+     */
+    let clic  kedElement = event.target;
+    while (clickedElement.dataset.index === undefined) {
+      clickedElement = clickedElement.parentNode;
+    }
+    const clickedIndex = clickedElement.dataset.index;
 
     this.setState({
-      isWordCloudModalOpen: !isWordCloudModalOpen,
+      isWordCloudModalOpen: true,
       activeSlide: clickedIndex,
     });
     this.slider.slickGoTo(clickedIndex);
+  }
+
+  closeWordCloudModal() {
+    this.setState({ isWordCloudModalOpen: false });
   }
 
   render() {
@@ -49,7 +61,7 @@ class Resources extends React.Component {
               Data.map((wordCloud, index) =>
                 (<WordCloud
                   index={index}
-                  toggleWordCloudModal={this.toggleWordCloudModal}
+                  openWordCloudModal={this.openWordCloudModal}
                   key={wordCloud.title}
                   words={wordCloud}
                 />))
@@ -57,7 +69,7 @@ class Resources extends React.Component {
           </div>
           <Modal
             isModalOpen={isWordCloudModalOpen}
-            closeModal={this.toggleWordCloudModal}
+            closeModal={this.closeWordCloudModal}
           >
             <Slider ref={slider => (this.slider = slider)} {...settings}> {/* eslint-disable-line */}
               {

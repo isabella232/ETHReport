@@ -7,14 +7,17 @@ const WordCloud = props => (
   <div
     className="wordcloud"
     data-index={props.index}
-    onClick={props.toggleWordCloudModal}
+    onClick={props.openWordCloudModal}
     role="button"
     tabIndex="0"
   >
-    <h3 data-index={props.index}>{ props.words.title }</h3>
-    <div data-index={props.index}>
+    <h3>{ props.words.title }</h3>
+    <div>
       { props.words.cloud.map(word => (
-        <span key={word.word} className={`size-${word.size}`}>
+        <span
+          key={word.word}
+          className={`size-${word.size}`}
+        >
           { word.word }
         </span>
         ))
@@ -29,7 +32,7 @@ WordCloud.propTypes = {
     title: PropTypes.string,
     cloud: PropTypes.array,
   }).isRequired,
-  toggleWordCloudModal: PropTypes.func.isRequired,
+  openWordCloudModal: PropTypes.func.isRequired,
 };
 
 export default WordCloud;
