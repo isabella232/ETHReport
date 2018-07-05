@@ -23,17 +23,17 @@ class Resources extends React.Component {
     /* Check if clicked element is a child and doesn't have a data-index,
     /* then go get data-index from the parentNode
      */
-    let clic  kedElement = event.target;
+    let clickedElement = event.target;
     while (clickedElement.dataset.index === undefined) {
       clickedElement = clickedElement.parentNode;
     }
     const clickedIndex = clickedElement.dataset.index;
+    this.slider.slickGoTo(clickedIndex);
 
     this.setState({
       isWordCloudModalOpen: true,
       activeSlide: clickedIndex,
     });
-    this.slider.slickGoTo(clickedIndex);
   }
 
   closeWordCloudModal() {
