@@ -2,6 +2,7 @@
 $smallMobile: 375px;
 $bigMobile: 480px;
 $tablet: 768px;
+$toDesktop: 1023px;
 $desktop: 1024px;
 $monitor: 1220px;
 $big: 1440px;
@@ -12,4 +13,10 @@ $text-color: #666;
 // text
 $body-font-size: 16;
 $body-line-height: 24;
-$primary-font: 'proxima_nova_regular', sans-serif;
+$primary-font: 'Roboto Mono', monospace;
+$secondary-font: 'bebas_neuebold', sans-serif;
+
+// layout
+$container-width: 600;
+$desktop-related-interviews-width: 180;
+$container-padding: 24;

@@ -7,25 +7,11 @@
 @import './assets/styles/global.scss';
 
 .page-wrapper {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-width: calculateRem(320);
+}
 
-  h1 {
-    text-align: center;
-    font-size: calculateRem(24);
-    line-height: 1;
-    border: 1px solid;
-    padding: calculateRem(20);
-
-    @media (min-width: $tablet) {
-      font-size: calculateRem(40);
-    }
-
-    strong {
-      font-weight: 700;
-    }
-  }
+.container {
+  max-width: calculateRem($container-width);
+  margin: 0 auto;
+  padding: 0 calculateRem($container-padding);
 }
