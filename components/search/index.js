@@ -7,6 +7,7 @@ import './style.scss';
 class Search extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = { term: '' };
     this.onInputChange = this.onInputChange.bind(this);
   }

@@ -6,6 +6,7 @@ import './style.scss';
 class InterviewsList extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = { isInterviewsListModalOpen: false };
     this.toggleInterviewsListModal = this.toggleInterviewsListModal.bind(this);
   }
@@ -21,7 +22,7 @@ class InterviewsList extends React.Component {
     return (
       <div className="interviews-list-wrap">
         <div className="mob-interviews-link">
-          <span role="button" tabIndex="0" onClick={this.toggleInterviewsListModal}>Interviews ({ Data.length})</span> {/* eslint-disable-line */}
+          <span role="button" tabIndex="0" onClick={this.toggleInterviewsListModal}>Interviews ({ Data.length })</span> {/* eslint-disable-line */}
           <span role="button" tabIndex="0" onClick={this.toggleInterviewsListModal}>View</span> {/* eslint-disable-line */}
         </div>
         <Modal
@@ -35,7 +36,7 @@ class InterviewsList extends React.Component {
                 <h4>Interviews</h4>
                 <ul>
                   {
-                    Data.map(interview => <li key={interview.id}>{ `${interview.name} ${interview.surname}`}</li>)
+                    Data.map(interview => <li key={interview.id}>{ `${interview.name} ${interview.surname}` }</li>)
                   }
                 </ul>
               </React.Fragment>

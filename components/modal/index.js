@@ -5,7 +5,7 @@ import './style.scss';
 const Modal = props => (
   <div className={`modal ${props.isModalOpen ? 'modal-open' : ''} ${props.modalOnMobileOnly ? 'modal-on-mobile-only' : ''} `}>
     <div className="modal-inner">
-      {props.children}
+      { props.children }
       <div role="button" tabIndex="0" onClick={props.closeModal} className="modal-close">x</div> {/* eslint-disable-line */}
     </div>
   </div>

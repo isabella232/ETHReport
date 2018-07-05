@@ -9,6 +9,7 @@ import './style.scss';
 class Resources extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       isWordCloudModalOpen: false,
       activeSlide: 1,
@@ -24,13 +25,11 @@ class Resources extends React.Component {
       isWordCloudModalOpen: !isWordCloudModalOpen,
       activeSlide: clickedIndex,
     });
-
     this.slider.slickGoTo(clickedIndex);
   }
 
   render() {
     const { isWordCloudModalOpen, activeSlide } = this.state;
-
     const settings = {
       infinite: true,
       speed: 500,
