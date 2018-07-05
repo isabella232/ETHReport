@@ -1,0 +1,1 @@
+module.exports=__NEXT_REGISTER_PAGE("/_error",function(){var e=webpackJsonp([0],{241:function(e,r,o){e.exports=o(242)}},[241]);return{page:e.default}});
