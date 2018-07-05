@@ -1,0 +1,50 @@
+@import './assets/styles/global.scss';
+
+.search-bar {
+  background-color: #efefef;
+  margin-bottom: calculateRem(56);
+
+  h3 {
+    padding: calculateRem(32) 0 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $secondary-font;
+    font-size: calculateRem(36);
+  }
+}
+
+.search-input {
+  width: 100%;
+  height: calculateRem(48);
+  border: 5px solid #efefef;
+  padding: calculateRem(12);
+  font-size: calculateRem(16);
+  position: relative;
+  bottom: calculateRem(-24);
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.search-results-wrap.container {
+  margin-bottom: calculateRem(48);
+
+  @media (min-width: $desktop) {
+    display: flex;
+    max-width: calculateRem($container-width + $desktop-related-interviews-width*2 + $container-padding*2);
+  }
+
+  h4 {
+    margin-bottom: calculateRem(24);
+  }
+}
+
+.search-results {
+
+  @media (min-width: $desktop) {
+    width: calculateRem($container-width);
+    padding: 0 calculateRem($container-padding);
+  }
+}
