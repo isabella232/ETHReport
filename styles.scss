@@ -1,0 +1,17 @@
+@import './assets/styles/base/reset.scss';
+@import './assets/styles/base/fonts.scss';
+@import './assets/styles/base/type.scss';
+@import './assets/styles/base/forms.scss';
+@import './assets/styles/base/buttons.scss';
+@import './assets/styles/base/slick-carousel.scss';
+@import './assets/styles/global.scss';
+
+.page-wrapper {
+  min-width: calculateRem(320);
+}
+
+.container {
+  max-width: calculateRem($container-width);
+  margin: 0 auto;
+  padding: 0 calculateRem($container-padding);
+}
