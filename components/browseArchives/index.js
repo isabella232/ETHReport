@@ -19,6 +19,7 @@ class Search extends React.Component {
       activeSingleInterviewId: 1,
       isSearchActive: false,
     };
+
     this.onInputChange = this.onInputChange.bind(this);
     this.toggleSingleInterview = this.toggleSingleInterview.bind(this);
     this.toggleInterviewsListModal = this.toggleInterviewsListModal.bind(this);
@@ -43,6 +44,7 @@ class Search extends React.Component {
 
   toggleInterviewsListModal() {
     const { isInterviewsListModalOpen } = this.state;
+
     this.setState({
       isInterviewsListModalOpen: !isInterviewsListModalOpen,
       isSingleInterviewModalOpen: false,
@@ -51,6 +53,7 @@ class Search extends React.Component {
 
   toggleSingleInterview(event) {
     const { isSingleInterviewModalOpen, isInterviewsListModalOpen } = this.state;
+
     this.setState({
       isInterviewsListModalOpen: !isInterviewsListModalOpen,
       isSingleInterviewModalOpen: !isSingleInterviewModalOpen,
