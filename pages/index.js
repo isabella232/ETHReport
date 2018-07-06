@@ -2,7 +2,7 @@ import React from 'react';
 import PageHeader from '../components/pageHeader';
 import PageFooter from '../components/pageFooter';
 import Resources from '../components/resources';
-import Search from '../components/search';
+import BrowseArchives from '../components/browseArchives';
 import '../styles.scss';
 
 class PageWrapper extends React.Component {
@@ -12,7 +12,7 @@ class PageWrapper extends React.Component {
       <div className="page-wrapper">
         <PageHeader />
         <Resources />
-        <Search />
+        <BrowseArchives />
         <PageFooter />
       </div>
     );

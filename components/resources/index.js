@@ -20,8 +20,8 @@ class Resources extends React.Component {
 
   openWordCloudModal(event) {
     /*
-    /* Check if clicked element is a child and doesn't have a data-index,
-    /* then go get data-index from the parentNode
+     * Check if clicked element is a child and doesn't have a data-index,
+     * then go get data-index from the parentNode
      */
     let clickedElement = event.target;
     while (clickedElement.dataset.index === undefined) {

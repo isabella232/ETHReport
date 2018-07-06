@@ -13,5 +13,6 @@
 .container {
   max-width: calculateRem($container-width);
   margin: 0 auto;
-  padding: 0 calculateRem($container-padding);
+  padding-left: calculateRem($container-padding);
+  padding-right: calculateRem($container-padding);
 }
