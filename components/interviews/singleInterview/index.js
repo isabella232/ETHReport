@@ -10,14 +10,14 @@ const SingleInterview = props => (
     closeModal={props.toggleSingleInterview}
   >
     <div className="single-interview">
-      <span className="number">{ props.activeSingleInterview }</span>
+      <span className="number">{ props.activeSingleInterviewId }</span>
       <div>{ Parser(props.selectedInterview.content) }</div>
     </div>
   </Modal>
 );
 
 SingleInterview.propTypes = {
-  activeSingleInterview: PropTypes.number.isRequired,
+  activeSingleInterviewId: PropTypes.number.isRequired,
   selectedInterview: PropTypes.shape({}).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
 };

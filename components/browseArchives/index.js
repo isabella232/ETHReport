@@ -16,7 +16,7 @@ class Search extends React.Component {
       term: '',
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
-      activeSingleInterview: 1,
+      activeSingleInterviewId: 1,
       isSearchActive: false,
     };
     this.onInputChange = this.onInputChange.bind(this);
@@ -44,22 +44,22 @@ class Search extends React.Component {
   }
 
   toggleSingleInterview(event) {
-    const { isSingleInterviewModalOpen } = this.state;
+    const { isSingleInterviewModalOpen, isInterviewsListModalOpen } = this.state;
     this.setState({
+      isInterviewsListModalOpen: !isInterviewsListModalOpen,
       isSingleInterviewModalOpen: !isSingleInterviewModalOpen,
-      isInterviewsListModalOpen: false,
-      activeSingleInterview: Number(event.target.id),
+      activeSingleInterviewId: Number(event.target.id),
     });
   }
 
   getSelectedInterview() {
-    const { activeSingleInterview } = this.state;
-    const selectedInterview = Data.find( item => item.id === activeSingleInterview);
+    const { activeSingleInterviewId } = this.state;
+    const selectedInterview = Data.find( item => item.id === activeSingleInterviewId);
     return selectedInterview;
   }
 
   render() {
-    const { isSingleInterviewModalOpen, isInterviewsListModalOpen, isSearchActive, activeSingleInterview } = this.state;
+    const { isSingleInterviewModalOpen, isInterviewsListModalOpen, isSearchActive, activeSingleInterviewId } = this.state;
 
     return (
       <div className="browse-wrap">
@@ -97,7 +97,7 @@ class Search extends React.Component {
           </div>
           {isSingleInterviewModalOpen &&
             (<SingleInterview
-              activeSingleInterview={activeSingleInterview}
+              activeSingleInterviewId={activeSingleInterviewId}
               selectedInterview={this.getSelectedInterview()}
               toggleSingleInterview={this.toggleSingleInterview}
             />)
