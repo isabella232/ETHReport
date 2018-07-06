@@ -28,12 +28,12 @@
   }
 }
 
-.search-results-wrap.container {
+.browse-content-wrap.container {
   margin-bottom: calculateRem(48);
 
   @media (min-width: $desktop) {
     display: flex;
-    max-width: calculateRem($container-width + $desktop-related-interviews-width*2 + $container-padding*2);
+    max-width: calculateRem($container-width + $browse-left-width*2 + $container-padding*2);
   }
 
   h4 {
@@ -41,10 +41,25 @@
   }
 }
 
-.search-results {
+.browse-content-left {
+  display: none;
 
   @media (min-width: $desktop) {
+    display: block;
+    width: calculateRem($browse-left-width);
+  }
+}
+
+.browse-content-right {
+
+  @media (min-width: $desktop) {
+    display: flex;
+    flex-direction: column;
     width: calculateRem($container-width);
     padding: 0 calculateRem($container-padding);
+
+    .interviews-wrap {
+      order: 1;
+    }
   }
 }
