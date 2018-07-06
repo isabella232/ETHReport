@@ -6,7 +6,7 @@ import './style.scss';
 
 const SingleInterview = props => (
   <Modal
-    isModalOpen={true}
+    isModalOpen
     closeModal={props.toggleSingleInterview}
   >
     <div className="single-interview">
@@ -18,7 +18,9 @@ const SingleInterview = props => (
 
 SingleInterview.propTypes = {
   activeSingleInterviewId: PropTypes.number.isRequired,
-  selectedInterview: PropTypes.shape({}).isRequired,
+  selectedInterview: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+  }).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
 };
 

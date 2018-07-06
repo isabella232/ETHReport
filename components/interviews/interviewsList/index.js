@@ -17,17 +17,16 @@ const InterviewsList = props => (
       <div className="interviews-list">
         <h4>Interviews ({ props.data.length })</h4>
         <ul>
-          {
-            props.data.map(interview =>
-              (<li
-                id={interview.id}
-                key={interview.id}
-                role="button"
-                tabIndex="0"
-                onClick={props.toggleSingleInterview}
-              >
-                { interview.name }
-              </li>))
+          { props.data.map(interview => (
+            // eslint-disable-next-line
+            <li
+              id={interview.id}
+              key={interview.id}
+              onClick={props.toggleSingleInterview}
+            >
+              { interview.name }
+            </li>
+            ))
           }
         </ul>
       </div>
@@ -37,9 +36,9 @@ const InterviewsList = props => (
 
 InterviewsList.propTypes = {
   isInterviewsListModalOpen: PropTypes.bool.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.node).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
   toggleInterviewsListModal: PropTypes.func.isRequired,
-}
+};
 
 export default InterviewsList;

@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedInterviewsList from '../interviews/relatedInterviewsList'
+import RelatedInterviewsList from '../interviews/relatedInterviewsList';
 import InterviewsList from '../interviews/interviewsList';
 import SingleInterview from '../interviews/singleInterview';
 import TopicsList from '../topicsList';
@@ -31,8 +31,14 @@ class Search extends React.Component {
     });
 
     if (event.target.value.length === 0) {
-      this.setState({isSearchActive: false});
+      this.setState({ isSearchActive: false });
     }
+  }
+
+  getSelectedInterview() {
+    const { activeSingleInterviewId } = this.state;
+    const selectedInterview = Data.find(item => item.id === activeSingleInterviewId);
+    return selectedInterview;
   }
 
   toggleInterviewsListModal() {
@@ -52,14 +58,13 @@ class Search extends React.Component {
     });
   }
 
-  getSelectedInterview() {
-    const { activeSingleInterviewId } = this.state;
-    const selectedInterview = Data.find( item => item.id === activeSingleInterviewId);
-    return selectedInterview;
-  }
-
   render() {
-    const { isSingleInterviewModalOpen, isInterviewsListModalOpen, isSearchActive, activeSingleInterviewId } = this.state;
+    const {
+      isSingleInterviewModalOpen,
+      isInterviewsListModalOpen,
+      isSearchActive,
+      activeSingleInterviewId,
+    } = this.state;
 
     return (
       <div className="browse-wrap">
@@ -77,11 +82,16 @@ class Search extends React.Component {
         </div>
         <div className="browse-content-wrap container">
           <div className="browse-content-left">
-            {isSearchActive && <RelatedInterviewsList data={Data} toggleSingleInterview={this.toggleSingleInterview} />}
+            {isSearchActive &&
+              (<RelatedInterviewsList
+                data={Data}
+                toggleSingleInterview={this.toggleSingleInterview}
+              />)
+            }
           </div>
           <div className="browse-content-right">
             {isSearchActive ? <SearchResults /> :
-             (
+              (
                 <React.Fragment>
                   <InterviewsList
                     data={Data}

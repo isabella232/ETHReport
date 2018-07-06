@@ -6,25 +6,24 @@ const RelatedInterviewsList = props => (
   <div className="related-interviews-list">
     <h4>Related <br />Interviews</h4>
     <ul>
-      {
-        props.data.map(interview =>
-          (<li
-            id={interview.id}
-            key={interview.id}
-            role="button"
-            tabIndex="0"
-            onClick={props.toggleSingleInterview}
-          >
-            { interview.name }
-          </li>))
+      { props.data.map(interview => (
+        // eslint-disable-next-line
+        <li
+          id={interview.id}
+          key={interview.id}
+          onClick={props.toggleSingleInterview}
+        >
+          { interview.name }
+        </li>
+        ))
       }
     </ul>
   </div>
 );
 
 RelatedInterviewsList.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.node).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
-}
+};
 
 export default RelatedInterviewsList;
