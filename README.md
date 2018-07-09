@@ -10,4 +10,4 @@ ETHPrize single page React website
 ## Deploy to staging
 - `npm run deploy` to deploy
 - This pushes the compiled code to a second repo at `https://github.com/Nona-Creative/nona-creative.github.io-ETHprize`
-- View staging Github page at `https://nona-creative.github.io/nona-creative.github.io-ETHprize/`
+- View staging Github page at `https://nona-creative.github.io/nona-creative.github.io-ETHprize`
