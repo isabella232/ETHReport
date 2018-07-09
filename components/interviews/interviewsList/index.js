@@ -36,7 +36,7 @@ const InterviewsList = props => (
 
 InterviewsList.propTypes = {
   isInterviewsListModalOpen: PropTypes.bool.isRequired,
-  data: PropTypes.arrayOf(PropTypes.node).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
   toggleInterviewsListModal: PropTypes.func.isRequired,
 };
