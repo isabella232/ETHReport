@@ -14,7 +14,7 @@
   },
   "config": {
     "deployToGit": {
-      "repository": "git@github.com:Nona-Creative/ETHPrize.git",
+      "repository": "git@github.com:Nona-Creative/nona-creative.github.io-ETHprize.git",
       "branch": "master",
       "folder": "out",
       "script": "npm run prod-build",
