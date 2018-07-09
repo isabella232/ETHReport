@@ -43,7 +43,7 @@ class BrowseArchives extends React.Component {
       this.setState({ isSearchActive: false });
     }
 
-    // Throttle search result frequency with debounce
+    // Throttle search result frequency with debounce while typing
     getSearchResults(term);
   }
 
@@ -65,10 +65,14 @@ class BrowseArchives extends React.Component {
   }
 
   setSearchTerm = (event) => {
+    const { term } = this.state;
+
     this.setState({
       term: event.target.innerText,
       isSearchActive: true,
     });
+
+    this.getSearchResults(term);
   }
 
   clearSearchInput = () => {
