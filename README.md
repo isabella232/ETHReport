@@ -9,4 +9,4 @@ ETHPrize single page React website
 
 `npm run deploy` to deploy to `https://nona-creative.github.io/ETHPrize`
 
-`yarn lint` runs the eslinter
+`npm lint` runs the eslinter
