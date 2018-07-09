@@ -52,6 +52,7 @@ class BrowseArchives extends React.Component {
     // eslint-disable-next-line
     console.log(`Get search results array based on searching for: ${term}`);
 
+    // Using static full interviews data array for now
     this.setState({
       searchResults: InterviewsData,
     });
