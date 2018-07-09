@@ -13,17 +13,40 @@
   }
 }
 
+.search-form {
+  position: relative;
+  bottom: calculateRem(-24);
+}
+
 .search-input {
   width: 100%;
   height: calculateRem(48);
   border: 5px solid #efefef;
-  padding: calculateRem(12);
+  padding: calculateRem(12) calculateRem(100) calculateRem(12) calculateRem(12);
   font-size: calculateRem(16);
-  position: relative;
-  bottom: calculateRem(-24);
 
   &:focus,
   &:active {
     outline: none;
   }
 }
+
+.search-clear-button {
+  position: absolute;
+  top: 10%;
+  right: calculateRem(4);
+  height: 80%;
+  border: 0;
+  padding: 0 calculateRem(16);
+  cursor: pointer;
+  font-size: calculateRem(14);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
