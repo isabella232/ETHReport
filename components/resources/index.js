@@ -1,8 +1,8 @@
 import React from 'react';
 import Parser from 'html-react-parser';
 import Slider from 'react-slick';
-import Modal from '../../components/modal';
-import WordCloud from '../../components/wordCloud';
+import Modal from '../modal';
+import WordCloud from '../wordCloud';
 import Data from '../../data/resources/wordclouds';
 import './style.scss';
 
