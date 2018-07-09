@@ -4,11 +4,12 @@ import InterviewsList from '../interviews/interviewsList';
 import SingleInterview from '../interviews/singleInterview';
 import TopicsList from '../topicsList';
 import ProjectsList from '../projectsList';
+import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
 import Data from '../../data/archives/interviews';
 import './style.scss';
 
-class Search extends React.Component {
+class BrowseArchives extends React.Component {
   constructor(props) {
     super(props);
 
@@ -67,22 +68,12 @@ class Search extends React.Component {
       isInterviewsListModalOpen,
       isSearchActive,
       activeSingleInterviewId,
+      term,
     } = this.state;
 
     return (
       <div className="browse-wrap">
-        <div className="search-bar">
-          <div className="container">
-            <h3>Browse Archives</h3>
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Search archives"
-              value={this.state.term}
-              onChange={this.onInputChange}
-            />
-          </div>
-        </div>
+        <SearchBar onInputChange={this.onInputChange} term={term} />
         <div className="browse-content-wrap container">
           <div className="browse-content-left">
             {isSearchActive &&
@@ -121,4 +112,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default BrowseArchives;
