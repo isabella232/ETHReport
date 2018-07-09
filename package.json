@@ -1,0 +1,58 @@
+{
+  "name": "ETHPrize",
+  "version": "1.0.0",
+  "description": "ETHPrize website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "serve": "next build && next start",
+    "prod-build": "next build && next export && touch out/.nojekyll",
+    "deploy": "deploy-to-git && rm -rf out",
+    "lint": "eslint \"components/**/*.js\" \"pages/*.js\"\"data/**/*.js\""
+  },
+  "config": {
+    "deployToGit": {
+      "repository": "git@github.com:Nona-Creative/nona-creative.github.io-ETHprize.git",
+      "branch": "master",
+      "folder": "out",
+      "script": "npm run prod-build",
+      "commit": "Deploy github pages",
+      "user": {
+        "email": "deploy@nonacreative.com",
+        "name": "deploy"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nona-Creative/ETHPrize.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nona-Creative/ETHPrize/issues"
+  },
+  "homepage": "https://github.com/Nona-Creative/ETHPrize#readme",
+  "dependencies": {
+    "@zeit/next-sass": "^0.2.0",
+    "html-react-parser": "^0.4.5",
+    "next": "^6.0.3",
+    "node-sass": "^4.9.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-slick": "^0.23.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "deploy-to-git": "^0.1.5",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1"
+  }
+}

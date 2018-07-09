@@ -1,0 +1,32 @@
+@import './assets/styles/global.scss';
+
+.mob-interviews-link {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: calculateRem(24);
+
+  @media (min-width: $desktop) {
+    display: none;
+  }
+
+  span {
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.interviews-list {
+
+  li {
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
