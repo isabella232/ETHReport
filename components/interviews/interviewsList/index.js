@@ -11,9 +11,11 @@ const InterviewsList = (props) => {
   // Build up interviews object with letter key
   sortedInterviews.forEach((interview) => {
     const firstLetter = interview.name.charAt(0);
+
     if (typeof interviews[firstLetter] === 'undefined') {
       interviews[firstLetter] = [];
     }
+
     interviews[firstLetter].push(interview);
   });
 
