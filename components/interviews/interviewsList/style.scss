@@ -20,10 +20,13 @@
 }
 
 .interviews-nav-wrap {
-  display: flex;
-  justify-content: space-between;
-  justify-content: flex-end;
-  position: relative;
+
+  @media (min-width: $desktop) {
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-end;
+    position: relative;
+  }
 }
 
 .interviews-list {
