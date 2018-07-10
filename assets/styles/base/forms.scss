@@ -1,0 +1,11 @@
+@import './assets/styles/global.scss';
+
+input,
+button {
+  font-family: $primary-font;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}

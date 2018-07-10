@@ -53,7 +53,7 @@ class Resources extends React.Component {
     };
 
     return (
-      <div className="resources-wrap">
+      <div className="resources-wrap" id="resources">
         <div className="container">
           <h2>Resources</h2>
           <div className="wordclouds-wrap">
