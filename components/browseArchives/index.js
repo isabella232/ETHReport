@@ -118,7 +118,7 @@ class BrowseArchives extends React.Component {
     } = this.state;
 
     return (
-      <div className="browse-wrap">
+      <div className="browse-wrap" id="browse">
         <SearchBar
           onSearchInputChange={this.onSearchInputChange}
           clearSearchInput={this.clearSearchInput}
