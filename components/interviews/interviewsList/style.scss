@@ -41,9 +41,11 @@
     padding-bottom: calculateRem(32);
   }
 
-  li {
-    cursor: pointer;
-    outline: none;
+  button {
+    border: 0;
+    padding: 0;
+    text-align: left;
+    font-size: calculateRem(14);
 
     &:hover {
       text-decoration: underline;

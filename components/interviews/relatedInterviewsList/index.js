@@ -7,13 +7,11 @@ const RelatedInterviewsList = props => (
     <h4>Related <br />Interviews</h4>
     <ul>
       { props.data.map(interview => (
-        // eslint-disable-next-line
         <li
           id={interview.id}
           key={interview.id}
-          onClick={props.toggleSingleInterview}
         >
-          { interview.name }
+          <button onClick={props.toggleSingleInterview}>{interview.name}</button>
         </li>
         ))
       }

@@ -3,10 +3,11 @@
 .related-interviews-list {
   margin-bottom: calculateRem(24);
 
-  li {
+  button {
+    border: 0;
+    padding: 0;
+    text-align: left;
     font-size: calculateRem(14);
-    cursor: pointer;
-    outline: none;
 
     &:hover {
       text-decoration: underline;

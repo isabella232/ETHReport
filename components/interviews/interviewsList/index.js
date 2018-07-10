@@ -3,14 +3,13 @@ import { PropTypes } from 'prop-types';
 import Modal from '../../modal';
 import './style.scss';
 
-const InterviewsList = props => {
-
+const InterviewsList = (props) => {
   // Sort interviews alphabetically
-  const sortedInterviews = props.data.sort((a, b) => { return a.name.localeCompare(b.name); });
+  const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
   const interviews = {};
 
   // Build up interviews object with letter key
-  sortedInterviews.forEach(interview => {
+  sortedInterviews.forEach((interview) => {
     const firstLetter = interview.name.charAt(0);
     if (typeof interviews[firstLetter] === 'undefined') {
       interviews[firstLetter] = [];
@@ -52,34 +51,31 @@ const InterviewsList = props => {
                   <div className="letter-block" key={firstLetter}>
                     <div id={firstLetter}>{ firstLetter }</div>
                     <ul>
-                      {interviews[firstLetter].map(interview => (
-                        // eslint-disable-next-line
+                      { interviews[firstLetter].map(interview => (
                         <li
                           id={interview.id}
                           key={interview.id}
-                          onClick={props.toggleSingleInterview}
                         >
-                          {interview.name}
+                          <button onClick={props.toggleSingleInterview}>{interview.name}</button>
                         </li>
-                        )
-                      )}
+                        ))
+                      }
                     </ul>
                   </div>
-                  )
-                )
+                ))
               }
             </div>
             <div className="letters-nav">
               {
                 Object.keys(interviews).map(firstLetter => (
+                  // eslint-disable-next-line
                   <span
                     key={firstLetter}
                     onClick={() => { document.querySelector(`#${firstLetter}`).scrollIntoView({ behavior: 'smooth' }); }}
                   >
                     { firstLetter }
                   </span>
-                  )
-                )
+                ))
               }
             </div>
           </div>
@@ -92,7 +88,7 @@ const InterviewsList = props => {
 InterviewsList.propTypes = {
   isInterviewsListModalOpen: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  toggleSingleInterview: PropTypes.func.isRequired,
+  toggleSingleInterview: PropTypes.func.isRequired, /* eslint-disable-line */
   toggleInterviewsListModal: PropTypes.func.isRequired,
 };
 

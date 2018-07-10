@@ -14,5 +14,8 @@
     "expect": false,
     "afterEach": false,
     "jest": false
+  },
+  "env": {
+    "browser": true
   }
 }

@@ -8,7 +8,7 @@ const SearchResults = (props) => {
   }
 
   // sort array alphabetically
-  const sortedInterviews = props.data.sort((a, b) => { return a.name.localeCompare(b.name); });
+  const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div className="search-results">
