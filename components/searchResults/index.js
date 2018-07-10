@@ -7,10 +7,13 @@ const SearchResults = (props) => {
     return <div>Loading...</div>;
   }
 
+  // sort array alphabetically
+  const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div className="search-results">
       <ul>
-        { props.data.map(interview => (
+        { sortedInterviews.map(interview => (
           // eslint-disable-next-line
           <li
             id={interview.id}

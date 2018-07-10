@@ -5,3 +5,7 @@ button {
   font-family: $primary-font;
 }
 
+button {
+  cursor: pointer;
+  outline: none;
+}
