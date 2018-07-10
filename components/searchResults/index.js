@@ -1,10 +1,40 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import './style.scss';
 
-const SearchResults = () => (
-  <div className="search-results">
-    <p>Search results go here</p>
-  </div>
-);
+const SearchResults = (props) => {
+  if (!props.data) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="search-results">
+      <ul>
+        { props.data.map(interview => (
+          // eslint-disable-next-line
+          <li
+            id={interview.id}
+            key={interview.id}
+            onClick={props.toggleSingleInterview}
+          >
+            <h3>{ interview.name }</h3>
+            <h5>1) Question goes here</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit dolor quis
+              ante mollis fringilla. <span>Lorem</span> ipsum dolor sit amet, consectetur adipiscing
+              elit.
+            </p>
+          </li>
+        ))
+        }
+      </ul>
+    </div>
+  );
+};
+
+SearchResults.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  toggleSingleInterview: PropTypes.func.isRequired,
+};
 
 export default SearchResults;

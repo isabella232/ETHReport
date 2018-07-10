@@ -1,31 +1,39 @@
 import React from 'react';
+import _ from 'lodash';
 import RelatedInterviewsList from '../interviews/relatedInterviewsList';
 import InterviewsList from '../interviews/interviewsList';
 import SingleInterview from '../interviews/singleInterview';
 import TopicsList from '../topicsList';
 import ProjectsList from '../projectsList';
+import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
-import Data from '../../data/archives/interviews';
+import InterviewsData from '../../data/archives/interviews';
 import './style.scss';
 
-class Search extends React.Component {
+class BrowseArchives extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       term: '',
+      searchResults: [],
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
       isSearchActive: false,
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
+    this.onSearchInputChange = this.onSearchInputChange.bind(this);
     this.toggleSingleInterview = this.toggleSingleInterview.bind(this);
     this.toggleInterviewsListModal = this.toggleInterviewsListModal.bind(this);
+    this.setSearchTerm = this.setSearchTerm.bind(this);
+    this.clearSearchInput = this.clearSearchInput.bind(this);
   }
 
-  onInputChange(event) {
+  onSearchInputChange = (event) => {
+    const { term } = this.state;
+    const getSearchResults = _.debounce(() => { this.getSearchResults(term); }, 500);
+
     this.setState({
       term: event.target.value,
       isSearchActive: true,
@@ -34,15 +42,47 @@ class Search extends React.Component {
     if (event.target.value.length === 0) {
       this.setState({ isSearchActive: false });
     }
+
+    // Throttle search result frequency with debounce while typing
+    getSearchResults(term);
   }
 
-  getSelectedInterview() {
+  getSearchResults = (term) => {
+    // Edit function to do actual search based on term and update searchResults with dynamic data
+    // eslint-disable-next-line
+    console.log(`Get search results array based on searching for: ${term}`);
+
+    // Using static full interviews data array for now
+    this.setState({
+      searchResults: InterviewsData,
+    });
+  }
+
+  getSelectedInterview = () => {
     const { activeSingleInterviewId } = this.state;
-    const selectedInterview = Data.find(item => item.id === activeSingleInterviewId);
+    const selectedInterview = InterviewsData.find(item => item.id === activeSingleInterviewId);
     return selectedInterview;
   }
 
-  toggleInterviewsListModal() {
+  setSearchTerm = (event) => {
+    const { term } = this.state;
+
+    this.setState({
+      term: event.target.innerText,
+      isSearchActive: true,
+    });
+
+    this.getSearchResults(term);
+  }
+
+  clearSearchInput = () => {
+    this.setState({
+      isSearchActive: false,
+      term: '',
+    });
+  }
+
+  toggleInterviewsListModal = () => {
     const { isInterviewsListModalOpen } = this.state;
 
     this.setState({
@@ -51,13 +91,19 @@ class Search extends React.Component {
     });
   }
 
-  toggleSingleInterview(event) {
+  toggleSingleInterview = (event) => {
     const { isSingleInterviewModalOpen, isInterviewsListModalOpen } = this.state;
+
+    let clickedInterview = event.target;
+    while (clickedInterview.id === '') {
+      clickedInterview = clickedInterview.parentNode;
+    }
+    const clickedSingleInterviewId = clickedInterview.id;
 
     this.setState({
       isInterviewsListModalOpen: !isInterviewsListModalOpen,
       isSingleInterviewModalOpen: !isSingleInterviewModalOpen,
-      activeSingleInterviewId: Number(event.target.id),
+      activeSingleInterviewId: Number(clickedSingleInterviewId),
     });
   }
 
@@ -67,43 +113,43 @@ class Search extends React.Component {
       isInterviewsListModalOpen,
       isSearchActive,
       activeSingleInterviewId,
+      term,
+      searchResults,
     } = this.state;
 
     return (
       <div className="browse-wrap">
-        <div className="search-bar">
-          <div className="container">
-            <h3>Browse Archives</h3>
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Search archives"
-              value={this.state.term}
-              onChange={this.onInputChange}
-            />
-          </div>
-        </div>
+        <SearchBar
+          onSearchInputChange={this.onSearchInputChange}
+          clearSearchInput={this.clearSearchInput}
+          isSearchActive={isSearchActive}
+          term={term}
+        />
         <div className="browse-content-wrap container">
           <div className="browse-content-left">
             {isSearchActive &&
               (<RelatedInterviewsList
-                data={Data}
+                data={InterviewsData}
                 toggleSingleInterview={this.toggleSingleInterview}
               />)
             }
           </div>
           <div className="browse-content-right">
-            {isSearchActive ? <SearchResults /> :
+            {isSearchActive ? (
+              <SearchResults
+                data={searchResults}
+                toggleSingleInterview={this.toggleSingleInterview}
+              />) :
               (
                 <React.Fragment>
                   <InterviewsList
-                    data={Data}
+                    data={InterviewsData}
                     isInterviewsListModalOpen={isInterviewsListModalOpen}
                     toggleSingleInterview={this.toggleSingleInterview}
                     toggleInterviewsListModal={this.toggleInterviewsListModal}
                   />
-                  <TopicsList />
-                  <ProjectsList />
+                  <TopicsList setSearchTerm={this.setSearchTerm} />
+                  <ProjectsList setSearchTerm={this.setSearchTerm} />
                 </React.Fragment>
               )
             }
@@ -121,4 +167,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default BrowseArchives;

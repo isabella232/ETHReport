@@ -22,7 +22,7 @@ const RelatedInterviewsList = props => (
 );
 
 RelatedInterviewsList.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.node).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
 };
 
