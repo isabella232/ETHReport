@@ -2,4 +2,37 @@
 
 .search-results {
 
+  li {
+    margin-bottom: calculateRem(32);
+    cursor: pointer;
+
+    h3 {
+      font-size: calculateRem(18);
+      margin-bottom: calculateRem(8);
+    }
+
+    h5 {
+      font-size: calculateRem(16);
+      margin-bottom: calculateRem(8);
+    }
+
+    p {
+      font-size: calculateRem(14);
+
+      span {
+        position: relative;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: -10%;
+          left: -15%;
+          height: 120%;
+          width: 130%;
+          background-color: #efefef;
+          z-index: -1;
+        }
+      }
+    }
+  }
 }
