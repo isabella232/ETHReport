@@ -11,4 +11,21 @@
     font-family: $secondary-font;
     font-size: calculateRem(36);
   }
+
+  p {
+    margin-bottom: calculateRem(24);
+  }
+}
+
+.page-header-nav {
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+    margin: 0 calculateRem(16);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
