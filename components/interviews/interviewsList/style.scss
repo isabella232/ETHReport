@@ -19,7 +19,27 @@
   }
 }
 
+.interviews-nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  justify-content: flex-end;
+  position: relative;
+}
+
 .interviews-list {
+
+  @media (min-width: $desktop) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    width: 96%;
+  }
+
+  .letter-block {
+    padding-bottom: calculateRem(32);
+  }
 
   li {
     cursor: pointer;
@@ -27,6 +47,19 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+.letters-nav {
+  display: none;
+
+  @media (min-width: $desktop) {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      cursor: pointer;
     }
   }
 }
