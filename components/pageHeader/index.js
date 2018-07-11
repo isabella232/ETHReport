@@ -1,11 +1,12 @@
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
 import './style.scss';
 
+const { publicRuntimeConfig } = getConfig();
+
 const PageHeader = () => (
-  <div className="page-header" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)`}}>
+  <div className="page-header" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}>
     <div className="container">
       <nav className="page-header-nav">
         <AnchorLink offset="24" href="#resources">Resources</AnchorLink>
