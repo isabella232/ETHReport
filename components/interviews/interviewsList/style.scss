@@ -9,9 +9,10 @@
     display: none;
   }
 
-  span {
-    cursor: pointer;
-    outline: none;
+  button {
+    color: $text-color;
+    padding: 0;
+    font-size: calculateRem($body-font-size);
 
     &:hover {
       text-decoration: underline;

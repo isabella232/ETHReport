@@ -33,22 +33,12 @@ class InterviewsList extends React.Component {
     return (
       <div className="interviews-wrap">
         <div className="mob-interviews-link">
-          {/* eslint-disable-next-line */}
-          <span
-            role="button"
-            tabIndex="0"
-            onClick={this.props.toggleInterviewsListModal}
-          >
+          <button onClick={this.props.toggleInterviewsListModal}>
             Interviews ({this.props.data.length})
-          </span>
-          {/* eslint-disable-next-line */}
-          <span
-            role="button"
-            tabIndex="0"
-            onClick={this.props.toggleInterviewsListModal}
-          >
+          </button>
+          <button onClick={this.props.toggleInterviewsListModal}>
             View
-          </span>
+          </button>
         </div>
         <Modal
           isModalOpen={this.props.isInterviewsListModalOpen}
@@ -69,7 +59,9 @@ class InterviewsList extends React.Component {
                             id={interview.id}
                             key={interview.id}
                           >
-                            <button onClick={this.props.toggleSingleInterview}>{interview.name}</button>
+                            <button onClick={this.props.toggleSingleInterview}>
+                              { interview.name }
+                            </button>
                           </li>
                         ))
                         }
@@ -81,12 +73,11 @@ class InterviewsList extends React.Component {
               <div className="letters-nav">
                 {
                   Object.keys(interviews).map(firstLetter => (
-                    // eslint-disable-next-line
                     <button
                       key={firstLetter}
                       onClick={() => {
                         document.querySelector(`#${firstLetter}`).scrollIntoView({ behavior: 'smooth' });
-                        this.setState({activeLetter: firstLetter});
+                        this.setState({ activeLetter: firstLetter });
                       }}
                       className={activeLetter === firstLetter ? 'active' : ''}
                     >
@@ -101,7 +92,7 @@ class InterviewsList extends React.Component {
       </div>
     );
   }
-};
+}
 
 InterviewsList.propTypes = {
   isInterviewsListModalOpen: PropTypes.bool.isRequired,
