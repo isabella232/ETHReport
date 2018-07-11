@@ -1,9 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 import './style.scss';
 
 const SearchBar = props => (
-  <div className="search-bar">
+  <div className="search-bar" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)`}}>
     <div className="container">
       <h3>Browse</h3>
       <form className="search-form">
