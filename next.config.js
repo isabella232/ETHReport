@@ -1,13 +1,18 @@
 const withSass = require('@zeit/next-sass');
 
 const dev = process && process.env && process.env.NODE_ENV === 'development';
+const subDirPath = dev ? '' : '/nona-creative.github.io-ETHprize';
 
 module.exports =
   withSass({
-    assetPrefix: dev ? '' : '/nona-creative.github.io-ETHprize',
+    assetPrefix: subDirPath,
     exportPathMap: function(defaultPathMap) {
       return {
         '/': { page: '/' }
       }
     }
   });
+
+module.exports.publicRuntimeConfig = { // Will be available on both server and client
+  subDirPath: subDirPath
+};
