@@ -5,7 +5,7 @@ import './style.scss';
 const SearchBar = props => (
   <div className="search-bar">
     <div className="container">
-      <h3>Browse Archives</h3>
+      <h3>Browse</h3>
       <form className="search-form">
         <input
           className="search-input"
@@ -15,13 +15,12 @@ const SearchBar = props => (
           onChange={props.onSearchInputChange}
         />
         { props.isSearchActive && (
-          // eslint-disable-next-line
-          <span
+          <button
             className="search-clear-button"
             onClick={props.clearSearchInput}
           >
             Clear search
-          </span>
+          </button>
           )
         }
       </form>

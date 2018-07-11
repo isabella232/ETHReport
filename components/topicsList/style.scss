@@ -1,0 +1,30 @@
+@import './assets/styles/global.scss';
+
+.topics-list {
+  margin-bottom: calculateRem(24);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    font-size: calculateRem(14);
+    padding: 0 calculateRem(8) calculateRem(8) 0;
+    cursor: pointer;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background-color: $red;
+      padding: calculateRem(8) calculateRem(12);
+      border-radius: 4px;
+      color: #fff;
+      transition: background-color 0.5s ease;
+
+      &:hover {
+        background-color: $dark-red;
+      }
+    }
+  }
+}

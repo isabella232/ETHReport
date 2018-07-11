@@ -1,0 +1,8 @@
+@import './assets/styles/global.scss';
+
+.page-footer {
+  background-color: $blue;
+  padding: calculateRem(8) 0;
+  text-align: center;
+  font-size: calculateRem(12);
+}

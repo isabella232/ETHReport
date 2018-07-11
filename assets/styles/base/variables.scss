@@ -8,15 +8,21 @@ $monitor: 1220px;
 $big: 1440px;
 
 // colors
-$text-color: #666;
+$text-color: hsla(0, 0, 100, .7);
+$blue: #3830cf;
+$blue-highlight: #0069d9; // button hover
+$navy: #1c2449;
+$dark-navy: #0c143a;
+$red: #d4434a;
+$dark-red: #AA2E49;
 
 // text
-$body-font-size: 16;
-$body-line-height: 24;
+$body-font-size: 15;
+$body-line-height: 23;
 $primary-font: 'Roboto Mono', monospace;
 $secondary-font: 'bebas_neuebold', sans-serif;
 
 // layout
-$container-width: 600;
+$container-width: 750;
 $browse-left-width: 180;
 $container-padding: 24;

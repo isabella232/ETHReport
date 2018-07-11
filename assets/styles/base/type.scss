@@ -1,0 +1,29 @@
+@import './assets/styles/global.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $primary-font;
+  font-size: calculateRem($body-font-size);
+  line-height: calculateRem($body-line-height);
+  letter-spacing: -.03em;
+  color: $text-color;
+  background-color: $dark-navy;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+strong {
+  font-weight: 700;
+}
