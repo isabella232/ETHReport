@@ -1,4 +1,5 @@
 import React from 'react';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { PropTypes } from 'prop-types';
 import Data from '../../data/archives/topics';
 import './style.scss';
@@ -9,9 +10,8 @@ const TopicsList = props => (
     <ul>
       {
         Data.map(topic => (
-          // eslint-disable-next-line
-          <li key={topic} onClick={props.setSearchTerm}>
-            <span>{ topic }</span>
+          <li key={topic}>
+            <AnchorLink href="#browse" onClick={props.setSearchTerm}>{ topic }</AnchorLink>
           </li>
         ))
       }

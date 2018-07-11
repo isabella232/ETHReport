@@ -13,12 +13,17 @@
     padding: 0 calculateRem(8) calculateRem(8) 0;
     cursor: pointer;
 
-    span {
-      background-color: rgba(0, 0, 0, 0.1);
-      padding: calculateRem(4) calculateRem(12);
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background-color: $red;
+      padding: calculateRem(8) calculateRem(12);
+      border-radius: 4px;
+      color: #fff;
+      transition: background-color 0.5s ease;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: $dark-red;
       }
     }
   }
