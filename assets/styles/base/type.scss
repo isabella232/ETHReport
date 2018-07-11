@@ -10,7 +10,9 @@ body {
   font-family: $primary-font;
   font-size: calculateRem($body-font-size);
   line-height: calculateRem($body-line-height);
+  letter-spacing: -.03em;
   color: $text-color;
+  background-color: $dark-navy;
 }
 
 h1,
