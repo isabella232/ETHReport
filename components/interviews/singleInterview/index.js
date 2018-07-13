@@ -34,10 +34,10 @@ SingleInterview.propTypes = {
     interview: PropTypes.array.isRequired,
   }).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
-  questions: PropTypes.shape({
+  questions: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
-  }).isRequired,
+  })).isRequired,
 };
 
 export default SingleInterview;
