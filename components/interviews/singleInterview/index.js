@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Parser from 'html-react-parser';
 import Modal from '../../modal';
 import './style.scss';
 
@@ -11,7 +10,19 @@ const SingleInterview = props => (
   >
     <div className="single-interview">
       <span className="number">{ props.activeSingleInterviewId }</span>
-      <div>{ Parser(props.selectedInterview.content) }</div>
+      <span className="name"> { props.selectedInterview.name } </span>
+      { props.selectedInterview.interview.filter(interview => interview.answer !== null)
+        .map((interview, index) => {
+          const question = props.questions[interview.question];
+
+          return (
+            <div key={`question-${question.id}`}>
+              <p className="question">{index + 1}) { question.text } </p>
+              <p className="answer">{ interview.answer } </p>
+            </div>
+          );
+        })
+      }
     </div>
   </Modal>
 );
@@ -19,9 +30,14 @@ const SingleInterview = props => (
 SingleInterview.propTypes = {
   activeSingleInterviewId: PropTypes.number.isRequired,
   selectedInterview: PropTypes.shape({
-    content: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    interview: PropTypes.array.isRequired,
   }).isRequired,
   toggleSingleInterview: PropTypes.func.isRequired,
+  questions: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default SingleInterview;
