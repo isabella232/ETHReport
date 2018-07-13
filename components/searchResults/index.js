@@ -4,12 +4,13 @@ import './style.scss';
 import Parser from 'html-react-parser';
 
 const SearchResults = (props) => {
-  if (!props.data) {
+  if (!props.data || props.data.length < 1) {
     return <div>Loading...</div>;
   }
 
   // sort array alphabetically
   const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
+
   const trimText = (text, length) => {
     if (text === null) {
       return '';

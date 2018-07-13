@@ -16,6 +16,7 @@ class BrowseArchives extends React.Component {
 
     this.state = {
       term: '',
+      debounceTerm: '',
       searchResults: [],
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
@@ -38,6 +39,7 @@ class BrowseArchives extends React.Component {
     this.setState({
       term: event.target.value,
       isSearchActive: true,
+      searchResults: [],
     });
 
     if (event.target.value.length === 0) {
@@ -76,8 +78,8 @@ class BrowseArchives extends React.Component {
   }
 
   getSelectedInterview = () => {
-    const { activeSingleInterviewId } = this.state;
-    const selectedInterview = this.transformInterviews(InterviewsData)
+    const { activeSingleInterviewId, interviewData } = this.state;
+    const selectedInterview = interviewData
       .find(item => item.id === activeSingleInterviewId);
     return selectedInterview;
   }
@@ -94,6 +96,9 @@ class BrowseArchives extends React.Component {
   getSearchResultsDebounce = _.debounce(() => {
     const { term } = this.state;
     this.getSearchResults(term);
+    this.setState({
+      debounceTerm: term,
+    });
   }, 700);
 
   clearSearchInput = () => {
@@ -222,6 +227,8 @@ class BrowseArchives extends React.Component {
       activeSingleInterviewId,
       term,
       searchResults,
+      interviewData,
+      debounceTerm,
     } = this.state;
 
     return (
@@ -236,7 +243,7 @@ class BrowseArchives extends React.Component {
           <div className="browse-content-left">
             {isSearchActive &&
               (<RelatedInterviewsList
-                data={this.transformInterviews(InterviewsData)}
+                data={interviewData}
                 toggleSingleInterview={this.toggleSingleInterview}
               />)
             }
@@ -246,13 +253,13 @@ class BrowseArchives extends React.Component {
               <SearchResults
                 data={searchResults}
                 questions={Questions}
-                term={term}
+                term={debounceTerm}
                 toggleSingleInterview={this.toggleSingleInterview}
               />) :
               (
                 <React.Fragment>
                   <InterviewsList
-                    data={this.transformInterviews(InterviewsData)}
+                    data={interviewData}
                     isInterviewsListModalOpen={isInterviewsListModalOpen}
                     toggleSingleInterview={this.toggleSingleInterview}
                     toggleInterviewsListModal={this.toggleInterviewsListModal}
