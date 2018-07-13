@@ -241,7 +241,7 @@ class BrowseArchives extends React.Component {
           <div className="browse-content-left">
             {isSearchActive &&
               (<RelatedInterviewsList
-                data={interviewData}
+                data={searchResults}
                 toggleSingleInterview={this.toggleSingleInterview}
               />)
             }
