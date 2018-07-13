@@ -74,6 +74,7 @@ class BrowseArchives extends React.Component {
     // Using static full interviews data array for now
     this.setState({
       searchResults,
+      debounceTerm: this.state.term,
     });
   }
 
@@ -96,9 +97,6 @@ class BrowseArchives extends React.Component {
   getSearchResultsDebounce = _.debounce(() => {
     const { term } = this.state;
     this.getSearchResults(term);
-    this.setState({
-      debounceTerm: term,
-    });
   }, 700);
 
   clearSearchInput = () => {
