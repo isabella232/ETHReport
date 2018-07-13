@@ -24,7 +24,25 @@ const SearchResults = (props) => {
     return text.replace(regex, `<span>${cleanTerm}</span>`);
   };
 
-  const processText = (text, length) => highlightTerm(trimText(text, length));
+  const processText = (text, length = 1500) => highlightTerm(trimText(text, length));
+
+  const findFirstQuestion = (interview) => {
+    let { answer } = interview.interview[interview.matchedIndex];
+    let id = interview.interview[interview.matchedIndex].question;
+
+    if (answer === null) {
+      const firstNonNullAnswer = interview.interview.find(question => question.answer !== null);
+      id = firstNonNullAnswer.question;
+      answer = firstNonNullAnswer.answer;
+    }
+
+    const { text } = props.questions.find(question => question.id === id);
+
+    return {
+      question: text,
+      answer: processText(answer),
+    };
+  };
 
   return (
     <div className="search-results">
@@ -38,9 +56,9 @@ const SearchResults = (props) => {
           >
             <h3>{ interview.name }</h3>
             <h5> {interview.matchedIndex + 1})&nbsp;
-              {props.questions.find(question => question.id === interview.interview[interview.matchedIndex].question).text}
+              { Parser(findFirstQuestion(interview).question) }
             </h5>
-            <p> { Parser(processText(interview.interview[interview.matchedIndex].answer, 1500))}
+            <p> { Parser(findFirstQuestion(interview).answer) }
             </p>
           </li>
         ))
