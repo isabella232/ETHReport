@@ -17,7 +17,7 @@ class BrowseArchives extends React.Component {
     this.state = {
       term: '',
       debounceTerm: '',
-      searchResults: [],
+      searchResults: [null],
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
@@ -39,7 +39,7 @@ class BrowseArchives extends React.Component {
     this.setState({
       term: event.target.value,
       isSearchActive: true,
-      searchResults: [],
+      searchResults: [null],
     });
 
     if (event.target.value.length === 0) {
