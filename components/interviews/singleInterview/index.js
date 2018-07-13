@@ -13,7 +13,7 @@ const SingleInterview = props => (
       <span className="name"> { props.selectedInterview.name } </span>
       { props.selectedInterview.interview.filter(interview => interview.answer !== null)
         .map((interview, index) => {
-          const question = props.questions[interview.question];
+          const question = props.questions.find(q => q.id === interview.question);
 
           return (
             <div key={`question-${question.id}`}>
