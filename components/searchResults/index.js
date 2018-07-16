@@ -1,7 +1,7 @@
 import React from 'react';
+import Parser from 'html-react-parser';
 import { PropTypes } from 'prop-types';
 import './style.scss';
-import Parser from 'html-react-parser';
 
 const SearchResults = (props) => {
   if (!props.data || props.data[0] === null) {
