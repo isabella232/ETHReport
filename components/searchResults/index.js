@@ -60,7 +60,7 @@ const SearchResults = (props) => {
           >
             <h3>{ interview.name }</h3>
             <h5>{interview.matchedIndex + 1})&nbsp;
-              { Parser(findFirstQuestion(interview).question) }
+              { findFirstQuestion(interview).question }
             </h5>
             <p>{ Parser(findFirstQuestion(interview).answer) }
             </p>
