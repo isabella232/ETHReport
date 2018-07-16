@@ -7,7 +7,7 @@ import TopicsList from '../topicsList';
 import ProjectsList from '../projectsList';
 import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
-import { InterviewsData, Questions } from '../../data/archives/interviews-data';
+import { InterviewsData, Questions } from '../../data/archives/interviews';
 import './style.scss';
 
 class BrowseArchives extends React.Component {

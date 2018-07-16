@@ -7,7 +7,7 @@ const SearchResults = (props) => {
   if (!props.data || props.data[0] === null) {
     return <div>Loading...</div>;
   } else if (props.data.length < 1) {
-    return <div> No results found </div>;
+    return <div>No results found</div>;
   }
 
   // sort array alphabetically
