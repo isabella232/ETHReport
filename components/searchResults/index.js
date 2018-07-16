@@ -36,6 +36,7 @@ const SearchResults = (props) => {
     if (answer === null) {
       const firstNonNullAnswer = interview.interview.find(question => question.answer !== null);
       id = firstNonNullAnswer.question;
+      // eslint-disable-next-line
       answer = firstNonNullAnswer.answer;
     }
 

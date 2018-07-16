@@ -109,7 +109,7 @@ class BrowseArchives extends React.Component {
       const interviewFormatted = [];
 
       qKeys.forEach((key, index) => {
-        if (key !== 'Name') {
+        if (key !== 'Name' && interview[key] !== null) {
           interviewFormatted.push({
             question: index,
             answer: interview[key],
@@ -118,7 +118,7 @@ class BrowseArchives extends React.Component {
       });
 
       betterInterviews.push({
-        id: i,
+        id: i + 1,
         tags: 'tag1, tag2, tag3',
         name: interview.Name,
         matchedIndex: -1,
