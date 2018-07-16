@@ -17,8 +17,8 @@ const SingleInterview = props => (
 
           return (
             <div key={`question-${question.id}`}>
-              <p className="question">{index + 1}) { question.text } </p>
-              <p className="answer">{ interview.answer } </p>
+              <p className="question">{index + 1}) { question.text }</p>
+              <p className="answer">{ interview.answer }</p>
             </div>
           );
         })

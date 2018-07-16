@@ -58,10 +58,10 @@ const SearchResults = (props) => {
             onClick={props.toggleSingleInterview}
           >
             <h3>{ interview.name }</h3>
-            <h5> {interview.matchedIndex + 1})&nbsp;
+            <h5>{interview.matchedIndex + 1})&nbsp;
               { Parser(findFirstQuestion(interview).question) }
             </h5>
-            <p> { Parser(findFirstQuestion(interview).answer) }
+            <p>{ Parser(findFirstQuestion(interview).answer) }
             </p>
           </li>
         ))

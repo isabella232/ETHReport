@@ -51,14 +51,7 @@ class BrowseArchives extends React.Component {
   }
 
   getSearchResults = (term) => {
-    // Edit function to do actual search based on term and update searchResults with dynamic data
-    // eslint-disable-next-line
-    console.log(`Get search results array based on searching for: ${term}`);
-
     const { interviewData } = this.state;
-    // we need to mutate searchResults to contain matchedQuestionIndex
-    /* const searchResults = interviewData
-      .filter(interview => this.termIsInInterview(term, interview)); */
 
     const searchResults = interviewData.reduce((filtered, interview) => {
       const findTerm = this.termIsInInterview(term, interview);
@@ -71,7 +64,6 @@ class BrowseArchives extends React.Component {
       return filtered;
     }, []);
 
-    // Using static full interviews data array for now
     this.setState({
       searchResults,
       debounceTerm: term,
@@ -163,9 +155,6 @@ class BrowseArchives extends React.Component {
   }
 
   termIsInInterview = (term, interview) => {
-    // first search name
-    // then search tags
-    // then search answers
     const lcTerm = term.toLowerCase();
     const matchesName = interview.name.toLowerCase().includes(lcTerm);
     const { interviewData } = this.state;
@@ -177,7 +166,6 @@ class BrowseArchives extends React.Component {
         foundIndex: 0,
       };
     }
-
 
     const matchesTag = interview.tags.toLowerCase().indexOf(lcTerm) !== -1;
 
