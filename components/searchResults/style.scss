@@ -12,6 +12,10 @@
 
       &:hover h3 {
         text-decoration: underline;
+
+        &.matched-name::before {
+          display: none;
+        }
       }
 
       h3 {

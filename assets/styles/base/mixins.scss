@@ -6,7 +6,7 @@
     height: calculateRem(1);
     background-color: $red;
     position: absolute;
-    bottom: 0;
+    bottom: calculateRem(3);
     left: 0;
     z-index: -1;
   }
