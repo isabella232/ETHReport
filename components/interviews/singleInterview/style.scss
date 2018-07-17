@@ -6,6 +6,21 @@
     font-size: calculateRem(50);
   }
 
+  .name {
+    color: white;
+    font-size: calculateRem(36);
+  }
+
+  .question {
+    font-size: calculateRem(28);
+    color: white;
+    margin: calculateRem(16) 0;
+  }
+
+  .answer {
+    color: #ddd;
+  }
+
   /* This is the css from `Fabio Berger + Remco Bloemen` interview
    * Note: it does not correctly format the other 2 interviews
    */

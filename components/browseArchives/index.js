@@ -7,7 +7,7 @@ import TopicsList from '../topicsList';
 import ProjectsList from '../projectsList';
 import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
-import InterviewsData from '../../data/archives/interviews';
+import { InterviewsData, Questions } from '../../data/archives/interviews';
 import './style.scss';
 
 class BrowseArchives extends React.Component {
@@ -16,11 +16,13 @@ class BrowseArchives extends React.Component {
 
     this.state = {
       term: '',
-      searchResults: [],
+      debounceTerm: '',
+      searchResults: [null],
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
       isSearchActive: false,
+      interviewData: this.transformInterviews(InterviewsData),
     };
 
     this.onSearchInputChange = this.onSearchInputChange.bind(this);
@@ -28,15 +30,16 @@ class BrowseArchives extends React.Component {
     this.toggleInterviewsListModal = this.toggleInterviewsListModal.bind(this);
     this.setSearchTerm = this.setSearchTerm.bind(this);
     this.clearSearchInput = this.clearSearchInput.bind(this);
+    this.transformInterviews = this.transformInterviews.bind(this);
+    this.termIsInInterview = this.termIsInInterview.bind(this);
+    this.getSearchResultsDebounce = this.getSearchResultsDebounce.bind(this);
   }
 
   onSearchInputChange = (event) => {
-    const { term } = this.state;
-    const getSearchResults = _.debounce(() => { this.getSearchResults(term); }, 500);
-
     this.setState({
       term: event.target.value,
       isSearchActive: true,
+      searchResults: [null],
     });
 
     if (event.target.value.length === 0) {
@@ -44,42 +47,86 @@ class BrowseArchives extends React.Component {
     }
 
     // Throttle search result frequency with debounce while typing
-    getSearchResults(term);
+    this.getSearchResultsDebounce();
   }
 
   getSearchResults = (term) => {
-    // Edit function to do actual search based on term and update searchResults with dynamic data
-    // eslint-disable-next-line
-    console.log(`Get search results array based on searching for: ${term}`);
+    const { interviewData } = this.state;
 
-    // Using static full interviews data array for now
+    const searchResults = interviewData.reduce((filtered, interview) => {
+      const findTerm = this.termIsInInterview(term, interview);
+      const matchedIndex = findTerm.foundIndex;
+
+      if (findTerm.found) {
+        filtered.push({ ...interview, matchedIndex });
+      }
+
+      return filtered;
+    }, []);
+
     this.setState({
-      searchResults: InterviewsData,
+      searchResults,
+      debounceTerm: term,
     });
   }
 
   getSelectedInterview = () => {
-    const { activeSingleInterviewId } = this.state;
-    const selectedInterview = InterviewsData.find(item => item.id === activeSingleInterviewId);
+    const { activeSingleInterviewId, interviewData } = this.state;
+    const selectedInterview = interviewData
+      .find(item => item.id === activeSingleInterviewId);
     return selectedInterview;
   }
 
   setSearchTerm = (event) => {
-    const { term } = this.state;
-
     this.setState({
       term: event.target.innerText,
       isSearchActive: true,
     });
 
-    this.getSearchResults(term);
+    this.getSearchResults(event.target.innerText);
   }
+
+  getSearchResultsDebounce = _.debounce(() => {
+    const { term } = this.state;
+    this.getSearchResults(term);
+  }, 700);
 
   clearSearchInput = () => {
     this.setState({
       isSearchActive: false,
       term: '',
     });
+  }
+
+  transformInterviews = (interviews) => {
+    // eslint-disable-next-line
+    const length = Object.keys(interviews).length;
+    const betterInterviews = [];
+
+    for (let i = 0; i < length; i++) {
+      const interview = interviews[i];
+      const qKeys = Object.keys(interview);
+      const interviewFormatted = [];
+
+      qKeys.forEach((key, index) => {
+        if (key !== 'Name' && interview[key] !== null) {
+          interviewFormatted.push({
+            question: index,
+            answer: interview[key],
+          });
+        }
+      });
+
+      betterInterviews.push({
+        id: i + 1,
+        tags: 'tag1, tag2, tag3',
+        name: interview.Name,
+        matchedIndex: -1,
+        interview: interviewFormatted,
+      });
+    }
+
+    return betterInterviews;
   }
 
   toggleInterviewsListModal = () => {
@@ -107,6 +154,57 @@ class BrowseArchives extends React.Component {
     });
   }
 
+  termIsInInterview = (term, interview) => {
+    const lcTerm = term.toLowerCase();
+    const matchesName = interview.name.toLowerCase().includes(lcTerm);
+    const { interviewData } = this.state;
+    let foundIndex = 0;
+
+    if (matchesName) {
+      return {
+        found: true,
+        foundIndex: 0,
+      };
+    }
+
+    const matchesTag = interview.tags.toLowerCase().indexOf(lcTerm) !== -1;
+
+    if (matchesTag) {
+      return {
+        found: true,
+        foundIndex: 0,
+      };
+    }
+
+    const matchingQuestions = interview.interview
+      .filter((question, questionIndex) => {
+        if (question.answer === null) {
+          return false;
+        }
+
+        const index = question.answer.toLowerCase().indexOf(lcTerm);
+
+        if (index !== -1 && interview.activeIndex !== -1) {
+          foundIndex = questionIndex;
+        }
+
+        return index !== -1;
+      });
+
+    this.setState({
+      interviewData,
+    });
+
+    if (matchingQuestions.length > 0) {
+      return {
+        found: true,
+        foundIndex,
+      };
+    }
+
+    return false;
+  }
+
   render() {
     const {
       isSingleInterviewModalOpen,
@@ -115,6 +213,8 @@ class BrowseArchives extends React.Component {
       activeSingleInterviewId,
       term,
       searchResults,
+      interviewData,
+      debounceTerm,
     } = this.state;
 
     return (
@@ -129,7 +229,7 @@ class BrowseArchives extends React.Component {
           <div className="browse-content-left">
             {isSearchActive &&
               (<RelatedInterviewsList
-                data={InterviewsData}
+                data={searchResults}
                 toggleSingleInterview={this.toggleSingleInterview}
               />)
             }
@@ -138,12 +238,14 @@ class BrowseArchives extends React.Component {
             {isSearchActive ? (
               <SearchResults
                 data={searchResults}
+                questions={Questions}
+                term={debounceTerm}
                 toggleSingleInterview={this.toggleSingleInterview}
               />) :
               (
                 <React.Fragment>
                   <InterviewsList
-                    data={InterviewsData}
+                    data={interviewData}
                     isInterviewsListModalOpen={isInterviewsListModalOpen}
                     toggleSingleInterview={this.toggleSingleInterview}
                     toggleInterviewsListModal={this.toggleInterviewsListModal}
@@ -159,6 +261,7 @@ class BrowseArchives extends React.Component {
               activeSingleInterviewId={activeSingleInterviewId}
               selectedInterview={this.getSelectedInterview()}
               toggleSingleInterview={this.toggleSingleInterview}
+              questions={Questions}
             />)
           }
         </div>
