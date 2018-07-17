@@ -191,7 +191,7 @@ class BrowseArchives extends React.Component {
         if (index !== -1 && interview.activeIndex !== -1) {
           foundIndex = questionIndex;
           positionInAnswer = index;
-          matchingQuestionAnswerPositions.push({ 
+          matchingQuestionAnswerPositions.push({
             id: question.question,
             strpos: index,
             answer: question.answer,
@@ -205,9 +205,6 @@ class BrowseArchives extends React.Component {
     this.setState({
       interviewData,
     });
-
-    // eslint-disable-next-line
-    console.log(matchingQuestionAnswerPositions);
 
     if (matchingQuestions.length > 0) {
       return {
