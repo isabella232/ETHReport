@@ -44,31 +44,32 @@
   width: 100%;
   height: 100%;
   padding-top: calculateRem(24);
+  position: relative;
 
   @media (min-width: $tablet) {
-    padding-top: calculateRem(48);
-  }
-
-  &.container {
-    max-width: calculateRem(1024);
+    padding-top: calculateRem(40);
   }
 }
 
 .modal-close {
-  position: fixed;
+  position: absolute;
   top: calculateRem(16);
   right: calculateRem(16);
-  padding: calculateRem(4);
-  background-color: #cfcfcf;
-  text-align: center;
-  width: calculateRem(32);
-  height: calculateRem(32);
-  border-radius: 50%;
   cursor: pointer;
   outline: none;
   z-index: 4;
 
-  &:hover {
-    background-color: #c1c1c1;
+  @media (min-width: $desktop) {
+    top: calculateRem(72);
+    right: calculateRem(-20);
+
+    svg {
+      width: calculateRem(30);
+      height: calculateRem(30);
+    }
+  }
+
+  &:hover svg path:last-child {
+    fill: $dark-red;
   }
 }
