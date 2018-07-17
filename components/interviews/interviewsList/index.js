@@ -1,7 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import Parser from 'html-react-parser';
 import Modal from '../../modal';
+import getConfig from 'next/config';
 import './style.scss';
+
+const { publicRuntimeConfig } = getConfig();
 
 class InterviewsList extends React.Component {
   constructor(props) {
@@ -34,10 +38,10 @@ class InterviewsList extends React.Component {
       <div className="interviews-wrap">
         <div className="mob-interviews-link">
           <button onClick={this.props.toggleInterviewsListModal}>
-            Interviews ({this.props.data.length})
+            <span>Interviews ({this.props.data.length})</span>
           </button>
           <button onClick={this.props.toggleInterviewsListModal}>
-            View
+            <span>View</span> <img src={`${publicRuntimeConfig.subDirPath}/static/img/right-chevron-icon.svg`} alt="right chevron icon" />
           </button>
         </div>
         <Modal
@@ -46,7 +50,7 @@ class InterviewsList extends React.Component {
           modalOnMobileOnly
         >
           <React.Fragment>
-            <h4>Interviews ({ this.props.data.length })</h4>
+            <h4>Interviews</h4>
             <div className="interviews-nav-wrap">
               <div className="interviews-list">
                 {
@@ -60,7 +64,7 @@ class InterviewsList extends React.Component {
                             key={interview.id}
                           >
                             <button onClick={this.props.toggleSingleInterview}>
-                              { interview.name }
+                              { Parser(interview.name) }
                             </button>
                           </li>
                         ))

@@ -10,14 +10,14 @@ const SingleInterview = props => (
     closeModal={props.toggleSingleInterview}
   >
     <div className="single-interview">
-      <span className="number">{ props.activeSingleInterviewId }</span>
-      <span className="name"> { props.selectedInterview.name } </span>
+      <div className="number">{ props.activeSingleInterviewId.toString().padStart(3, '0') }</div>
+      <div className="name"> { Parser(props.selectedInterview.name) } </div>
       { props.selectedInterview.interview.filter(interview => interview.answer !== null)
         .map((interview, index) => {
           const question = props.questions.find(q => q.id === interview.question);
 
           return (
-            <div key={`question-${question.id}`}>
+            <div className="qa-block" key={`question-${question.id}`}>
               <p className="question">{index + 1}) { question.text }</p>
               <p className="answer">{ Parser(interview.answer) }</p>
             </div>
