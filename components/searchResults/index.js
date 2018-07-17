@@ -48,9 +48,8 @@ const SearchResults = (props) => {
     };
   };
 
-  const interviewNameContainsTerm = (name, searchTerm) => {
-    return name.toLowerCase().includes(searchTerm.toLowerCase());
-  };
+  const interviewNameContainsTerm = (name, searchTerm) =>
+    name.toLowerCase().includes(searchTerm.toLowerCase());
 
   return (
     <div className="search-results">

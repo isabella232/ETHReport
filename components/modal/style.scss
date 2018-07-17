@@ -55,8 +55,6 @@
   position: absolute;
   top: calculateRem(16);
   right: calculateRem(16);
-  cursor: pointer;
-  outline: none;
   z-index: 4;
 
   @media (min-width: $desktop) {

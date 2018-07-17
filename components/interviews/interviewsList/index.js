@@ -1,8 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Parser from 'html-react-parser';
-import Modal from '../../modal';
 import getConfig from 'next/config';
+import Modal from '../../modal';
 import './style.scss';
 
 const { publicRuntimeConfig } = getConfig();
