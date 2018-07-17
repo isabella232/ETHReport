@@ -1,0 +1,9 @@
+@import './assets/styles/global.scss';
+
+.content-blurb {
+  margin-bottom: calculateRem(60);
+
+  p {
+    margin-bottom: calculateRem(16);
+  }
+}
