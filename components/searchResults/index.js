@@ -27,7 +27,7 @@ const SearchResults = (props) => {
     return text.replace(regex, `<span>${cleanTerm}</span>`);
   };
 
-  const processText = (text, length = 1500) => highlightTerm(trimText(text, length));
+  const processText = (text, length = 500) => highlightTerm(trimText(text, length));
 
   const findFirstQuestion = (interview) => {
     let { answer } = interview.interview[interview.matchedIndex];
@@ -48,6 +48,10 @@ const SearchResults = (props) => {
     };
   };
 
+  const interviewNameContainsTerm = (name, searchTerm) => {
+    return name.toLowerCase().includes(searchTerm.toLowerCase());
+  };
+
   return (
     <div className="search-results">
       <ul>
@@ -58,12 +62,15 @@ const SearchResults = (props) => {
             key={interview.id}
             onClick={props.toggleSingleInterview}
           >
-            <h3>{ interview.name }</h3>
+            <h3 className={interviewNameContainsTerm(interview.name, props.term) ? 'matched-name' : ''}>
+              { Parser(interview.name) }
+            </h3>
             <h5>{interview.matchedIndex + 1})&nbsp;
               { findFirstQuestion(interview).question }
             </h5>
-            <p>{ Parser(findFirstQuestion(interview).answer) }
-            </p>
+            <div>
+              { Parser(findFirstQuestion(interview).answer) }
+            </div>
           </li>
         ))
         }
