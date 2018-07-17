@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import Parser from 'html-react-parser';
 import Modal from '../../modal';
 import './style.scss';
 
@@ -18,7 +19,7 @@ const SingleInterview = props => (
           return (
             <div key={`question-${question.id}`}>
               <p className="question">{index + 1}) { question.text }</p>
-              <p className="answer">{ interview.answer }</p>
+              <p className="answer">{ Parser(interview.answer) }</p>
             </div>
           );
         })
