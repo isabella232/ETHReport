@@ -14,7 +14,6 @@
     font-size: calculateRem(40);
     color: $red;
     letter-spacing: 4px;
-    text-align: center;
     line-height: 1.1;
 
     @media (min-width: $desktop) {
@@ -31,8 +30,9 @@
 
 .search-input {
   width: 100%;
-  height: calculateRem(48);
-  border: 5px solid #efefef;
+  height: calculateRem(44);
+  border: 0;
+  box-shadow: 0 0 5px 5px $dark-navy;
   padding: calculateRem(12);
   font-size: calculateRem(16);
 
