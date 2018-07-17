@@ -14,15 +14,11 @@
         text-decoration: underline;
       }
 
-      h3,
-      h5 {
-        color: #fff;
-        margin-bottom: calculateRem(8);
-      }
-
       h3 {
+        color: #fff;
         font-size: calculateRem(24);
         display: inline-block;
+        margin-bottom: calculateRem(12);
 
         &.matched-name {
           @include hasRedUnderline;
@@ -31,7 +27,9 @@
       }
 
       h5 {
+        color: #fff;
         font-size: calculateRem(16);
+        margin-bottom: calculateRem(8);
       }
 
       p {

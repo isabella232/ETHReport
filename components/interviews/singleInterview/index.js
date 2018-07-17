@@ -19,7 +19,7 @@ const SingleInterview = props => (
           return (
             <div className="qa-block" key={`question-${question.id}`}>
               <p className="question">{index + 1}) { question.text }</p>
-              <p className="answer">{ Parser(interview.answer) }</p>
+              <div className="answer">{ Parser(interview.answer) }</div>
             </div>
           );
         })
