@@ -12,7 +12,7 @@ body {
   line-height: calculateRem($body-line-height);
   letter-spacing: -.03em;
   color: $text-color;
-  background-color: $dark-navy;
+  background-color: $navy-dark;
 }
 
 h1,
@@ -26,4 +26,18 @@ h6 {
 
 strong {
   font-weight: 700;
+}
+
+.main-heading {
+  text-transform: uppercase;
+  font-family: $secondary-font;
+  font-size: calculateRem(50);
+  color: $red;
+  letter-spacing: 4px;
+  line-height: 1.1;
+
+  @media (min-width: $desktop) {
+    font-size: calculateRem(68);
+    letter-spacing: 10px;
+  }
 }

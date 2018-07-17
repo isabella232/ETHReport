@@ -13,7 +13,7 @@ const PageHeader = () => (
         <AnchorLink href="#browse">Browse Archives</AnchorLink>
       </nav>
       <img className="logo" src={`${publicRuntimeConfig.subDirPath}/static/img/ETHPrize-logo.png`} alt="ETHPrize logo" />
-      <h1>Ethereum Report</h1>
+      <h1 className="main-heading">Eth Report 2018</h1>
       <p>
         We&rsquo;ve interviewed 100+ developers to showcase the biggest opportunities in the
         Ethereum ecosystem

@@ -14,19 +14,7 @@
   }
 
   h1 {
-    color: #fff;
     margin-bottom: calculateRem(24);
-    text-transform: uppercase;
-    font-family: $secondary-font;
-    font-size: calculateRem(40);
-    color: $red;
-    letter-spacing: 4px;
-    line-height: 1.1;
-
-    @media (min-width: $desktop) {
-      font-size: calculateRem(50);
-      letter-spacing: 10px;
-    }
   }
 
   p {

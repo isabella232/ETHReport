@@ -4,19 +4,8 @@
   padding: calculateRem(40) 0;
 
   h2 {
-    text-transform: uppercase;
-    font-family: $secondary-font;
-    font-size: calculateRem(40);
-    color: $red;
-    letter-spacing: 4px;
     text-align: center;
-    line-height: 1.1;
     margin-bottom: calculateRem(24);
-
-    @media (min-width: $desktop) {
-      font-size: calculateRem(50);
-      letter-spacing: 10px;
-    }
   }
 }
 

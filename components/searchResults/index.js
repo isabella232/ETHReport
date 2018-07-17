@@ -1,7 +1,10 @@
 import React from 'react';
 import Parser from 'html-react-parser';
 import { PropTypes } from 'prop-types';
+import getConfig from 'next/config';
 import './style.scss';
+
+const { publicRuntimeConfig } = getConfig();
 
 const SearchResults = (props) => {
   if (!props.data || props.data[0] === null) {
@@ -55,21 +58,24 @@ const SearchResults = (props) => {
     <div className="search-results">
       <ul>
         { sortedInterviews.map(interview => (
-          // eslint-disable-next-line
-          <li
-            id={interview.id}
-            key={interview.id}
-            onClick={props.toggleSingleInterview}
-          >
-            <h3 className={interviewNameContainsTerm(interview.name, props.term) ? 'matched-name' : ''}>
-              { Parser(interview.name) }
-            </h3>
-            <h5>{interview.matchedIndex + 1})&nbsp;
-              { findFirstQuestion(interview).question }
-            </h5>
-            <div>
-              { Parser(findFirstQuestion(interview).answer) }
-            </div>
+          <li key={interview.id}>
+            <button id={interview.id} onClick={props.toggleSingleInterview}>
+              <div className="li-header">
+                <h3 className={interviewNameContainsTerm(interview.name, props.term) ? 'matched-name' : ''}>
+                  { Parser(interview.name) }
+                </h3>
+                <div>
+                  <span>View</span>
+                  <img src={`${publicRuntimeConfig.subDirPath}/static/img/right-chevron-icon.svg`} alt="right chevron icon" />
+                </div>
+              </div>
+              <h5>{interview.matchedIndex + 1})&nbsp;
+                { findFirstQuestion(interview).question }
+              </h5>
+              <div>
+                { Parser(findFirstQuestion(interview).answer) }
+              </div>
+            </button>
           </li>
         ))
         }

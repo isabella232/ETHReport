@@ -6,19 +6,19 @@
   background-position: center;
   background-size: cover;
   margin-bottom: calculateRem(56);
+  height: calculateRem(164);
+  padding-top: calculateRem(52);
 
-  h3 {
-    padding: calculateRem(24) 0 0;
-    text-transform: uppercase;
-    font-family: $secondary-font;
-    font-size: calculateRem(40);
-    color: $red;
-    letter-spacing: 4px;
-    line-height: 1.1;
+  @media (min-width: $desktop) {
+    height: calculateRem(240);
+    padding-top: calculateRem(88);
+  }
+
+  .main-heading {
+    margin-bottom: calculateRem(12);
 
     @media (min-width: $desktop) {
-      font-size: calculateRem(50);
-      letter-spacing: 10px;
+      margin-bottom: calculateRem(32);
     }
   }
 }
@@ -32,20 +32,31 @@
   width: 100%;
   height: calculateRem(44);
   border: 0;
-  box-shadow: 0 0 5px 5px $dark-navy;
+  box-shadow: 0 0 0 8px $navy-dark;
   padding: calculateRem(12);
   font-size: calculateRem(16);
 
   &:focus,
   &:active {
     outline: none;
+
+    .search-icon {
+      display: none;
+    }
   }
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: calculateRem(12);
+  margin-top: calculateRem(-10);
 }
 
 .search-clear-button {
   position: absolute;
   top: 10%;
-  right: calculateRem(4);
+  right: 0;
   height: 80%;
   border: 0;
   padding: 0 calculateRem(16);

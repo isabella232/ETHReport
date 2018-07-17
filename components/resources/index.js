@@ -55,7 +55,7 @@ class Resources extends React.Component {
     return (
       <div className="resources-wrap" id="resources">
         <div className="container">
-          <h2>Resources</h2>
+          <h2 className="main-heading">Resources</h2>
           <div className="wordclouds-wrap">
             {
               Data.map((wordCloud, index) =>
