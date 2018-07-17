@@ -56,9 +56,10 @@ class BrowseArchives extends React.Component {
     const searchResults = interviewData.reduce((filtered, interview) => {
       const findTerm = this.termIsInInterview(term, interview);
       const matchedIndex = findTerm.foundIndex;
+      const { matchingQuestionAnswerPositions } = findTerm;
 
       if (findTerm.found) {
-        filtered.push({ ...interview, matchedIndex });
+        filtered.push({ ...interview, matchedIndex, matchingQuestionAnswerPositions });
       }
 
       return filtered;
@@ -159,6 +160,7 @@ class BrowseArchives extends React.Component {
     const matchesName = interview.name.toLowerCase().includes(lcTerm);
     const { interviewData } = this.state;
     let foundIndex = 0;
+    let positionInAnswer = -1;
 
     if (matchesName) {
       return {
@@ -176,6 +178,8 @@ class BrowseArchives extends React.Component {
       };
     }
 
+    const matchingQuestionAnswerPositions = [];
+
     const matchingQuestions = interview.interview
       .filter((question, questionIndex) => {
         if (question.answer === null) {
@@ -186,6 +190,13 @@ class BrowseArchives extends React.Component {
 
         if (index !== -1 && interview.activeIndex !== -1) {
           foundIndex = questionIndex;
+          positionInAnswer = index;
+          matchingQuestionAnswerPositions.push({ 
+            id: question.question,
+            strpos: index,
+            answer: question.answer,
+            index: questionIndex,
+          });
         }
 
         return index !== -1;
@@ -195,10 +206,15 @@ class BrowseArchives extends React.Component {
       interviewData,
     });
 
+    // eslint-disable-next-line
+    console.log(matchingQuestionAnswerPositions);
+
     if (matchingQuestions.length > 0) {
       return {
         found: true,
         foundIndex,
+        positionInAnswer,
+        matchingQuestionAnswerPositions,
       };
     }
 

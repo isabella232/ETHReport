@@ -16,12 +16,20 @@ const SearchResults = (props) => {
   // sort array alphabetically
   const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
 
-  const trimText = (text, length) => {
+  const trimText = (text, strpos, length) => {
+    let offset = 0;
+    let firstEclipses = '';
+
     if (text === null) {
       return '';
     }
 
-    return text.length <= length ? text : `${text.substr(0, length)}...`;
+    if (strpos > length && strpos !== -1 && length > 50) {
+      offset = strpos - length;
+      firstEclipses = '<p>...';
+    }
+
+    return text.length <= length ? text : `${firstEclipses}${text.substr(offset, length + offset)}...`;
   };
 
   const highlightTerm = (text) => {
@@ -30,25 +38,12 @@ const SearchResults = (props) => {
     return text.replace(regex, `<span>${cleanTerm}</span>`);
   };
 
-  const processText = (text, length = 500) => highlightTerm(trimText(text, length));
+  const processText = (text, strpos, length = 500) => highlightTerm(trimText(text, strpos, length));
 
-  const findFirstQuestion = (interview) => {
-    let { answer } = interview.interview[interview.matchedIndex];
-    let id = interview.interview[interview.matchedIndex].question;
-
-    if (answer === null) {
-      const firstNonNullAnswer = interview.interview.find(question => question.answer !== null);
-      id = firstNonNullAnswer.question;
-      // eslint-disable-next-line
-      answer = firstNonNullAnswer.answer;
-    }
-
+  const findQuestion = (answer) => {
+    const { id } = answer;
     const { text } = props.questions.find(question => question.id === id);
-
-    return {
-      question: text,
-      answer: processText(answer),
-    };
+    return text;
   };
 
   const interviewNameContainsTerm = (name, searchTerm) =>
@@ -69,12 +64,17 @@ const SearchResults = (props) => {
                   <img src={`${publicRuntimeConfig.subDirPath}/static/img/right-chevron-icon.svg`} alt="right chevron icon" />
                 </div>
               </div>
-              <h5>{interview.matchedIndex + 1})&nbsp;
-                { findFirstQuestion(interview).question }
-              </h5>
-              <div>
-                { Parser(findFirstQuestion(interview).answer) }
-              </div>
+
+              { interview.matchingQuestionAnswerPositions.map(match => (
+                <div>
+                  <h5>{match.index + 1})&nbsp;
+                    { findQuestion(match) }
+                  </h5>
+                  <div>
+                    { Parser(processText(match.answer, match.strpos)) }
+                  </div>
+                </div>
+              ))}
             </button>
           </li>
         ))
