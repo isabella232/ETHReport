@@ -1,0 +1,13 @@
+@mixin hasRedUnderline() {
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: calculateRem(1);
+    background-color: $red;
+    position: absolute;
+    bottom: calculateRem(3);
+    left: 0;
+    z-index: -1;
+  }
+}

@@ -8,21 +8,22 @@ const { publicRuntimeConfig } = getConfig();
 const SearchBar = props => (
   <div className="search-bar" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}>
     <div className="container">
-      <h3>Browse</h3>
+      <h3 className="main-heading">Archives</h3>
       <form className="search-form">
         <input
           className="search-input"
           type="search"
-          placeholder="Search archives"
+          placeholder="Search"
           value={props.term}
           onChange={props.onSearchInputChange}
         />
+        <img className="search-icon" src={`${publicRuntimeConfig.subDirPath}/static/img/search-icon.svg`} alt="Search" />
         { props.isSearchActive && (
           <button
             className="search-clear-button"
             onClick={props.clearSearchInput}
           >
-            Clear search
+            <img src={`${publicRuntimeConfig.subDirPath}/static/img/clear-search-icon.svg`} alt="Clear search" />
           </button>
           )
         }

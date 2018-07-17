@@ -4,37 +4,74 @@
 
   li {
     margin-bottom: calculateRem(32);
-    cursor: pointer;
 
-    h3 {
-      font-size: calculateRem(18);
-      margin-bottom: calculateRem(8);
-      color: #fff;
+    button {
+      text-align: left;
+      width: 100%;
+      padding: 0;
+
+      &:hover h3 {
+        text-decoration: underline;
+
+        &.matched-name::before {
+          display: none;
+        }
+      }
+
+      h3 {
+        color: #fff;
+        font-size: calculateRem(24);
+        display: inline-block;
+        margin-bottom: calculateRem(12);
+
+        &.matched-name {
+          @include hasRedUnderline;
+          position: relative;
+        }
+      }
+
+      h5 {
+        color: #fff;
+        font-size: calculateRem(16);
+        margin-bottom: calculateRem(8);
+      }
+
+      p {
+        color: hsla(0, 0, 100, .6);
+        font-size: calculateRem(14);
+        line-height: 1.6;
+        display: inline;
+
+        span {
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -2%;
+            height: 120%;
+            width: 104%;
+            background-color: $red;
+            color: $navy;
+            z-index: -1;
+          }
+        }
+      }
     }
+  }
 
-    h5 {
-      font-size: calculateRem(16);
-      margin-bottom: calculateRem(8);
+  .li-header {
+    display: flex;
+    justify-content: space-between;
+
+    > div {
       color: #fff;
-    }
-
-    p {
-      font-size: calculateRem(14);
+      display: flex;
+      align-items: center;
 
       span {
-        position: relative;
-        
-        &::before {
-          content: '';
-          position: absolute;
-          top: -10%;
-          left: -2%;
-          height: 120%;
-          width: 104%;
-          background-color: $red;
-          color: $navy;
-          z-index: -1;
-        }
+        margin: 0 calculateRem(12);
       }
     }
   }

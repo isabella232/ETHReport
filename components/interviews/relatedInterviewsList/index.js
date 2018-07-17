@@ -1,4 +1,5 @@
 import React from 'react';
+import Parser from 'html-react-parser';
 import { PropTypes } from 'prop-types';
 import './style.scss';
 
@@ -11,14 +12,14 @@ const RelatedInterviewsList = (props) => {
 
   return (
     <div className="related-interviews-list">
-      <h4>Related <br />Interviews</h4>
+      <h5>Related <br />Interviews</h5>
       <ul>
         { props.data.map(interview => (
           <li
             id={interview.id}
             key={interview.id}
           >
-            <button onClick={props.toggleSingleInterview}>{ interview.name }</button>
+            <button onClick={props.toggleSingleInterview}>{ Parser(interview.name) }</button>
           </li>
           ))
         }
