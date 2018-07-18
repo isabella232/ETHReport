@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10.0
+      - image: circleci/node:8.9.4
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +19,7 @@ jobs:
           command: npm run lint
   deploy_to_staging:
     docker:
-      - image: circleci/node:7.10.0
+      - image: circleci/node:8.9.4
     steps:
       - checkout
       - run: yarn
