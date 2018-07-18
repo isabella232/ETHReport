@@ -1,6 +1,6 @@
 import React from 'react';
-import Data from '../../data/content/content';
 import Parser from 'html-react-parser';
+import Data from '../../data/content/content';
 import './style.scss';
 
 const ContentBlurb = () => (
