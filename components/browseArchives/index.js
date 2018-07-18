@@ -106,8 +106,7 @@ class BrowseArchives extends React.Component {
   }
 
   transformInterviews = (interviews) => {
-    // eslint-disable-next-line
-    const length = Object.keys(interviews).length;
+    const { length } = Object.keys(interviews);
     const betterInterviews = [];
 
     for (let i = 0; i < length; i++) {
@@ -216,14 +215,6 @@ class BrowseArchives extends React.Component {
 
     const matchCount = matchingQuestionAnswerPositions
       .reduce((accumulator, match) => accumulator + match.count, 0);
-    // eslint-disable-next-line
-    console.log({
-      found: true,
-      foundIndex,
-      positionInAnswer,
-      matchingQuestionAnswerPositions,
-      matchCount,
-    });
 
     if (matchingQuestions.length > 0) {
       return {
