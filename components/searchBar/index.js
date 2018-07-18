@@ -8,7 +8,9 @@ const { publicRuntimeConfig } = getConfig();
 const SearchBar = props => (
   <div className="search-bar" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}>
     <div className="container">
-      <h3 className="main-heading">Archives</h3>
+      <h3 className="main-heading" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/heading-textured-bg.jpg)` }}>
+        Archives
+      </h3>
       <form className="search-form">
         <input
           className="search-input"
