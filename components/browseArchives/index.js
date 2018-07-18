@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-import getConfig from 'next/config';
 import RelatedInterviewsList from '../interviews/relatedInterviewsList';
 import InterviewsList from '../interviews/interviewsList';
 import SingleInterview from '../interviews/singleInterview';
@@ -10,8 +9,6 @@ import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
 import { InterviewsData, Questions } from '../../data/archives/interviews';
 import './style.scss';
-
-const { publicRuntimeConfig } = getConfig();
 
 class BrowseArchives extends React.Component {
   constructor(props) {
