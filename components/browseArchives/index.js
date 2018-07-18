@@ -57,9 +57,15 @@ class BrowseArchives extends React.Component {
       const findTerm = this.termIsInInterview(term, interview);
       const matchedIndex = findTerm.foundIndex;
       const { matchingQuestionAnswerPositions } = findTerm;
+      const { matchCount } = findTerm;
 
       if (findTerm.found) {
-        filtered.push({ ...interview, matchedIndex, matchingQuestionAnswerPositions });
+        filtered.push({
+          ...interview,
+          matchedIndex,
+          matchingQuestionAnswerPositions,
+          matchCount,
+        });
       }
 
       return filtered;
@@ -158,7 +164,6 @@ class BrowseArchives extends React.Component {
   termIsInInterview = (term, interview) => {
     const lcTerm = term.toLowerCase();
     const matchesName = interview.name.toLowerCase().includes(lcTerm);
-    const { interviewData } = this.state;
     let foundIndex = 0;
     let positionInAnswer = -1;
 
@@ -166,6 +171,7 @@ class BrowseArchives extends React.Component {
       return {
         found: true,
         foundIndex: 0,
+        matchCount: 0,
       };
     }
 
@@ -175,6 +181,7 @@ class BrowseArchives extends React.Component {
       return {
         found: true,
         foundIndex: 0,
+        matchCount: 0,
       };
     }
 
@@ -189,6 +196,10 @@ class BrowseArchives extends React.Component {
         const index = question.answer.toLowerCase().indexOf(lcTerm);
 
         if (index !== -1 && interview.activeIndex !== -1) {
+          const cleanTerm = term.replace(/[^a-zA-Z 0-9]+/g, '');
+          const regex = new RegExp(cleanTerm, 'ig');
+          const count = question.answer.match(regex).length;
+
           foundIndex = questionIndex;
           positionInAnswer = index;
           matchingQuestionAnswerPositions.push({
@@ -196,14 +207,22 @@ class BrowseArchives extends React.Component {
             strpos: index,
             answer: question.answer,
             index: questionIndex,
+            count,
           });
         }
 
         return index !== -1;
       });
 
-    this.setState({
-      interviewData,
+    const matchCount = matchingQuestionAnswerPositions
+      .reduce((accumulator, match) => accumulator + match.count, 0);
+    // eslint-disable-next-line
+    console.log({
+      found: true,
+      foundIndex,
+      positionInAnswer,
+      matchingQuestionAnswerPositions,
+      matchCount,
     });
 
     if (matchingQuestions.length > 0) {
@@ -212,6 +231,7 @@ class BrowseArchives extends React.Component {
         foundIndex,
         positionInAnswer,
         matchingQuestionAnswerPositions,
+        matchCount,
       };
     }
 
