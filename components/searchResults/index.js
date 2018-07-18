@@ -76,7 +76,7 @@ const SearchResults = (props) => {
   const highlightTerm = (text) => {
     const cleanTerm = props.term.replace(/[^a-zA-Z 0-9]+/g, '');
     const regex = new RegExp(cleanTerm, 'ig');
-    return text.replace(regex, `<span>${cleanTerm}</span>`);
+    return text.replace(regex, match => `<span>${match}</span>`);
   };
 
   const processText = (text, strpos, length = 500) => highlightTerm(trimText(text, strpos, length));
