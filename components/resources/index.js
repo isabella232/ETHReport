@@ -1,10 +1,13 @@
 import React from 'react';
 import Parser from 'html-react-parser';
 import Slider from 'react-slick';
+import getConfig from 'next/config';
 import Modal from '../modal';
 import WordCloud from '../wordCloud';
 import Data from '../../data/resources/wordclouds';
 import './style.scss';
+
+const { publicRuntimeConfig } = getConfig();
 
 class Resources extends React.Component {
   constructor(props) {
@@ -55,7 +58,9 @@ class Resources extends React.Component {
     return (
       <div className="resources-wrap" id="resources">
         <div className="container">
-          <h2 className="main-heading">Resources</h2>
+          <h2 className="main-heading" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/heading-textured-bg.jpg)` }}>
+            Resources
+          </h2>
           <div className="wordclouds-wrap">
             {
               Data.map((wordCloud, index) =>
