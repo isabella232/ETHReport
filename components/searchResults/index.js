@@ -74,7 +74,7 @@ const SearchResults = (props) => {
   };
 
   const highlightTerm = (text) => {
-    const cleanTerm = props.term.replace(/[^a-zA-Z 0-9]+/g, '').toLowerCase();
+    const cleanTerm = props.term.replace(/[^a-zA-Z 0-9]+/g, '');
     const regex = new RegExp(cleanTerm, 'ig');
     return text.replace(regex, `<span>${cleanTerm}</span>`);
   };
