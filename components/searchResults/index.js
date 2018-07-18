@@ -107,7 +107,7 @@ const SearchResults = (props) => {
               </div>
               {interview.matchingQuestionAnswerPositions ?
               interview.matchingQuestionAnswerPositions.map(match => (
-                <div key={match.index + 1}>
+                <div className="question-wrap" key={match.index + 1}>
                   <h5>{match.index + 1})&nbsp;
                     { findQuestion(match) }
                   </h5>
