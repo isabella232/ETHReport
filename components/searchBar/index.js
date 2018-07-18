@@ -30,6 +30,9 @@ const SearchBar = props => (
           )
         }
       </form>
+      {props.numResults > 0 && props.numResults[0] !== null ?
+        <p className="search-count">{ props.numMatchedTerms } search term matches | { props.numResults } interview matches</p> :
+      ''}
     </div>
   </div>
 );
@@ -39,6 +42,8 @@ SearchBar.propTypes = {
   isSearchActive: PropTypes.bool.isRequired,
   onSearchInputChange: PropTypes.func.isRequired,
   clearSearchInput: PropTypes.func.isRequired,
+  numResults: PropTypes.number.isRequired,
+  numMatchedTerms: PropTypes.number.isRequired,
 };
 
 export default SearchBar;

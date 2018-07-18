@@ -16,39 +16,75 @@ const SearchResults = (props) => {
   // sort array alphabetically
   const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
 
-  const trimText = (text, length) => {
+  const getStartOffset = (text) => {
+    if (text.indexOf('>') === 0) {
+      return -2;
+    } else if (text.indexOf('/p>') === 0) {
+      return 3;
+    } else if (text.indexOf('p>') === 0) {
+      return -1;
+    } else if (text.indexOf('<p>') !== 0) {
+      return false;
+    }
+
+    return 0;
+  };
+
+  const getEndOffset = (text) => {
+    if (text.substr(text.length - 1, 1) === '<') {
+      return -1;
+    } else if (text.substr(text.length - 2, 2) === '<p') {
+      return -2;
+    } else if (text.substr(text.length - 3, 3) === '<p>') {
+      return -3;
+    }
+
+    return 0;
+  };
+
+  const trimText = (text, strpos, length) => {
+    let offset = 0;
+    let firstEllipses = '';
+    let lastEllipses = '';
+    let startOffset = 0;
+    let endOffset = 0;
+
     if (text === null) {
       return '';
     }
 
-    return text.length <= length ? text : `${text.substr(0, length)}...`;
+    if (strpos > length && strpos !== -1 && length > 50) {
+      offset = strpos - length;
+      firstEllipses = '<p>...</p>';
+    }
+
+    const offsetText = text.substr(offset, length + offset);
+    startOffset = getStartOffset(offsetText);
+    endOffset = getEndOffset(offsetText);
+
+    const newOffsetText = startOffset ?
+      text.substr(offset + startOffset, length + offset + endOffset) :
+      `<p>${text.substr(offset + 0, length + offset + endOffset)}`;
+
+    if (newOffsetText.substr(newOffsetText.length - 1, 1) !== '.' && newOffsetText.substr(newOffsetText.length - 1, 1) !== '>') {
+      lastEllipses = '...';
+    }
+
+    return text.length <= length ? text : `${firstEllipses}${newOffsetText}${lastEllipses}`;
   };
 
   const highlightTerm = (text) => {
-    const cleanTerm = props.term.replace(/[^a-zA-Z 0-9]+/g, '').toLowerCase();
+    const cleanTerm = props.term.replace(/[^a-zA-Z 0-9]+/g, '');
     const regex = new RegExp(cleanTerm, 'ig');
-    return text.replace(regex, `<span>${cleanTerm}</span>`);
+    return text.replace(regex, match => `<span>${match}</span>`);
   };
 
-  const processText = (text, length = 500) => highlightTerm(trimText(text, length));
+  const processText = (text, strpos, length = 500) => highlightTerm(trimText(text, strpos, length));
 
-  const findFirstQuestion = (interview) => {
-    let { answer } = interview.interview[interview.matchedIndex];
-    let id = interview.interview[interview.matchedIndex].question;
-
-    if (answer === null) {
-      const firstNonNullAnswer = interview.interview.find(question => question.answer !== null);
-      id = firstNonNullAnswer.question;
-      // eslint-disable-next-line
-      answer = firstNonNullAnswer.answer;
-    }
-
+  const findQuestion = (answer) => {
+    const { id } = answer;
     const { text } = props.questions.find(question => question.id === id);
-
-    return {
-      question: text,
-      answer: processText(answer),
-    };
+    return text;
   };
 
   const interviewNameContainsTerm = (name, searchTerm) =>
@@ -69,12 +105,17 @@ const SearchResults = (props) => {
                   <img src={`${publicRuntimeConfig.subDirPath}/static/img/right-chevron-icon.svg`} alt="right chevron icon" />
                 </div>
               </div>
-              <h5>{interview.matchedIndex + 1})&nbsp;
-                { findFirstQuestion(interview).question }
-              </h5>
-              <div>
-                { Parser(findFirstQuestion(interview).answer) }
-              </div>
+              {interview.matchingQuestionAnswerPositions ?
+              interview.matchingQuestionAnswerPositions.map(match => (
+                <div key={match.index + 1}>
+                  <h5>{match.index + 1})&nbsp;
+                    { findQuestion(match) }
+                  </h5>
+                  <div>
+                    { Parser(processText(match.answer, match.strpos)) }
+                  </div>
+                </div>
+              )) : ''}
             </button>
           </li>
         ))

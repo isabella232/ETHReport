@@ -71,3 +71,8 @@
     outline: none;
   }
 }
+
+.search-count {
+  margin: calculateRem(36) 0;
+  font-size: calculateRem(13);
+}

@@ -17,12 +17,13 @@ class BrowseArchives extends React.Component {
     this.state = {
       term: '',
       debounceTerm: '',
-      searchResults: [null],
+      searchResults: [],
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
       isSearchActive: false,
       interviewData: this.transformInterviews(InterviewsData),
+      matchedCount: 0,
     };
 
     this.onSearchInputChange = this.onSearchInputChange.bind(this);
@@ -39,7 +40,7 @@ class BrowseArchives extends React.Component {
     this.setState({
       term: event.target.value,
       isSearchActive: true,
-      searchResults: [null],
+      searchResults: [],
     });
 
     if (event.target.value.length === 0) {
@@ -56,17 +57,28 @@ class BrowseArchives extends React.Component {
     const searchResults = interviewData.reduce((filtered, interview) => {
       const findTerm = this.termIsInInterview(term, interview);
       const matchedIndex = findTerm.foundIndex;
+      const { matchingQuestionAnswerPositions } = findTerm;
+      const { matchCount } = findTerm;
 
       if (findTerm.found) {
-        filtered.push({ ...interview, matchedIndex });
+        filtered.push({
+          ...interview,
+          matchedIndex,
+          matchingQuestionAnswerPositions,
+          matchCount,
+        });
       }
 
       return filtered;
     }, []);
 
+    const matchedCount = searchResults
+      .reduce((accumulator, match) => accumulator + match.matchCount, 0);
+
     this.setState({
       searchResults,
       debounceTerm: term,
+      matchedCount,
     });
   }
 
@@ -95,12 +107,13 @@ class BrowseArchives extends React.Component {
     this.setState({
       isSearchActive: false,
       term: '',
+      matchedCount: 0,
+      searchResults: [],
     });
   }
 
   transformInterviews = (interviews) => {
-    // eslint-disable-next-line
-    const length = Object.keys(interviews).length;
+    const { length } = Object.keys(interviews);
     const betterInterviews = [];
 
     for (let i = 0; i < length; i++) {
@@ -157,13 +170,14 @@ class BrowseArchives extends React.Component {
   termIsInInterview = (term, interview) => {
     const lcTerm = term.toLowerCase();
     const matchesName = interview.name.toLowerCase().includes(lcTerm);
-    const { interviewData } = this.state;
     let foundIndex = 0;
+    let positionInAnswer = -1;
 
     if (matchesName) {
       return {
         found: true,
         foundIndex: 0,
+        matchCount: 0,
       };
     }
 
@@ -173,8 +187,11 @@ class BrowseArchives extends React.Component {
       return {
         found: true,
         foundIndex: 0,
+        matchCount: 0,
       };
     }
+
+    const matchingQuestionAnswerPositions = [];
 
     const matchingQuestions = interview.interview
       .filter((question, questionIndex) => {
@@ -185,20 +202,34 @@ class BrowseArchives extends React.Component {
         const index = question.answer.toLowerCase().indexOf(lcTerm);
 
         if (index !== -1 && interview.activeIndex !== -1) {
+          const cleanTerm = term.replace(/[^a-zA-Z 0-9]+/g, '');
+          const regex = new RegExp(cleanTerm, 'ig');
+          const count = question.answer.match(regex).length;
+
           foundIndex = questionIndex;
+          positionInAnswer = index;
+          matchingQuestionAnswerPositions.push({
+            id: question.question,
+            strpos: index,
+            answer: question.answer,
+            index: questionIndex,
+            count,
+          });
         }
 
         return index !== -1;
       });
 
-    this.setState({
-      interviewData,
-    });
+    const matchCount = matchingQuestionAnswerPositions
+      .reduce((accumulator, match) => accumulator + match.count, 0);
 
     if (matchingQuestions.length > 0) {
       return {
         found: true,
         foundIndex,
+        positionInAnswer,
+        matchingQuestionAnswerPositions,
+        matchCount,
       };
     }
 
@@ -215,6 +246,7 @@ class BrowseArchives extends React.Component {
       searchResults,
       interviewData,
       debounceTerm,
+      matchedCount,
     } = this.state;
 
     return (
@@ -224,6 +256,8 @@ class BrowseArchives extends React.Component {
           clearSearchInput={this.clearSearchInput}
           isSearchActive={isSearchActive}
           term={term}
+          numResults={searchResults.length}
+          numMatchedTerms={matchedCount}
         />
         <div className="browse-content-wrap container">
           <div className="browse-content-left">
