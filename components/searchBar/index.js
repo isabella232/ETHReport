@@ -29,8 +29,7 @@ const SearchBar = props => (
         }
       </form>
       {props.numResults > 0 && props.numResults[0] !== null ?
-        // eslint-disable-next-line
-        <p style={{marginTop: '32px'}}>{ props.numMatchedTerms } search term matches | { props.numResults } interviews</p> :
+        <p className="search-count">{ props.numMatchedTerms } search term matches | { props.numResults } interview matches</p> :
       ''}
     </div>
   </div>
