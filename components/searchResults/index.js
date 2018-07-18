@@ -105,14 +105,11 @@ const SearchResults = (props) => {
                   <img src={`${publicRuntimeConfig.subDirPath}/static/img/right-chevron-icon.svg`} alt="right chevron icon" />
                 </div>
               </div>
-              <p>
-                { interview.matchCount } matches
-              </p>
               {interview.matchingQuestionAnswerPositions ?
               interview.matchingQuestionAnswerPositions.map(match => (
                 <div key={match.index + 1}>
                   <h5>{match.index + 1})&nbsp;
-                    { findQuestion(match) } ({match.count} matches)
+                    { findQuestion(match) }
                   </h5>
                   <div>
                     { Parser(processText(match.answer, match.strpos)) }

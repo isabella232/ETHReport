@@ -17,12 +17,13 @@ class BrowseArchives extends React.Component {
     this.state = {
       term: '',
       debounceTerm: '',
-      searchResults: [null],
+      searchResults: [],
       isSingleInterviewModalOpen: false,
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
       isSearchActive: false,
       interviewData: this.transformInterviews(InterviewsData),
+      matchedCount: 0,
     };
 
     this.onSearchInputChange = this.onSearchInputChange.bind(this);
@@ -39,7 +40,7 @@ class BrowseArchives extends React.Component {
     this.setState({
       term: event.target.value,
       isSearchActive: true,
-      searchResults: [null],
+      searchResults: [],
     });
 
     if (event.target.value.length === 0) {
@@ -71,9 +72,13 @@ class BrowseArchives extends React.Component {
       return filtered;
     }, []);
 
+    const matchedCount = searchResults
+      .reduce((accumulator, match) => accumulator + match.matchCount, 0);
+
     this.setState({
       searchResults,
       debounceTerm: term,
+      matchedCount,
     });
   }
 
@@ -102,6 +107,8 @@ class BrowseArchives extends React.Component {
     this.setState({
       isSearchActive: false,
       term: '',
+      matchedCount: 0,
+      searchResults: [],
     });
   }
 
@@ -239,6 +246,7 @@ class BrowseArchives extends React.Component {
       searchResults,
       interviewData,
       debounceTerm,
+      matchedCount,
     } = this.state;
 
     return (
@@ -248,6 +256,8 @@ class BrowseArchives extends React.Component {
           clearSearchInput={this.clearSearchInput}
           isSearchActive={isSearchActive}
           term={term}
+          numResults={searchResults.length}
+          numMatchedTerms={matchedCount}
         />
         <div className="browse-content-wrap container">
           <div className="browse-content-left">
