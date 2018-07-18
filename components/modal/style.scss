@@ -52,14 +52,15 @@
 }
 
 .modal-close {
-  position: absolute;
+  position: fixed;
   top: calculateRem(16);
   right: calculateRem(16);
   z-index: 4;
 
   @media (min-width: $desktop) {
     top: calculateRem(72);
-    right: calculateRem(-20);
+    right: inherit;
+    left: calc(370px + 50%);
 
     svg {
       width: calculateRem(30);

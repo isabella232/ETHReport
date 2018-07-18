@@ -1,33 +1,95 @@
 @import './assets/styles/global.scss';
 
 .wordcloud {
-  text-align: center;
-  padding: calculateRem(24);
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: calculateRem(24) 0 calculateRem(24) calculateRem(24);
   outline: none;
+  background-color: $navy;
 
-  h3{
-    margin-bottom: calculateRem(8);
+  @media (min-width: $tablet) {
+    padding-top: calculateRem(40);
+    padding-bottom: calculateRem(40);
   }
 
-  span {
-    display: inline-block;
-    padding: 0 calculateRem(8);
+  h3 {
+    @include hasRedUnderline;
+    position: relative;
+    margin: calculateRem(-24) 0 calculateRem(60) calculateRem(40);
+    color: #fff;
+    font-family: $secondary-font;
+    font-size: calculateRem(22);
+    line-height: 1;
+    letter-spacing: 2px;
+    padding-right: calculateRem(24);
+    transition: font-size 0.2s ease;
 
-    &.size-1 {
-      font-size: calculateRem(30);
+    @media (min-width: $tablet) {
+      font-size: calculateRem(38);
     }
 
-    &.size-2 {
-      font-size: calculateRem(25);
+    &::before {
+      z-index: 0;
+      bottom: calculateRem(-8);
     }
+  }
 
-    &.size-3 {
-      font-size: calculateRem(20);
-    }
+  p {
+    font-family: $secondary-font;
+    color: $blue-light;
+    font-size: calculateRem(100);
+    line-height: 0.8;
+  }
 
-    &.size-4 {
-      font-size: calculateRem(15);
+  .words-wrap {
+    text-align: center;
+    padding-right: calculateRem(24);
+
+    > span {
+      display: inline-block;
+      line-height: 1.2;
+      padding: calculateRem(4) calculateRem(12);
+      transform: scale(1);
+      transition: transform 0.2s ease-in-out;
+
+      &.size-1 {
+        font-size: calculateRem(30);
+      }
+
+      &.size-2 {
+        font-size: calculateRem(25);
+      }
+
+      &.size-3 {
+        font-size: calculateRem(20);
+      }
+
+      &.size-4 {
+        font-size: calculateRem(15);
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      > span,
+      > a {
+        color: $text-color;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #fff;
+          text-shadow: 0 0 11px #000;
+        }
+      }
+
+      > a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

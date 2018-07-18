@@ -3,7 +3,7 @@
 .browse-content-wrap.container {
   margin-bottom: calculateRem(48);
 
-  @media (min-width: $desktop) {
+  @media (min-width: $monitor) {
     display: flex;
     max-width: calculateRem($container-width + $browse-left-width*2 + $container-padding*2);
   }
@@ -20,7 +20,7 @@
 .browse-content-left {
   display: none;
 
-  @media (min-width: $desktop) {
+  @media (min-width: $monitor) {
     display: block;
     width: calculateRem($browse-left-width);
   }
@@ -28,7 +28,7 @@
 
 .browse-content-right {
 
-  @media (min-width: $desktop) {
+  @media (min-width: $monitor) {
     display: flex;
     flex-direction: column;
     width: calculateRem($container-width);

@@ -1,107 +1,218 @@
 const data = [
   {
-    title: 'Resources Title 1',
+    title: 'Common Frustrations and Problems',
     cloud: [
       {
-        'word': 'testing',
-        'size': 3
+        'word': 'Testing',
+        'size': 1,
+        'url': '',
       },
       {
-        'word': 'Solidity',
-        'size': 2
+        'word': 'Verification',
+        'size': 3,
+        'url': '',
       },
       {
-        'word': 'Gas',
-        'size': 3
-      },
-      {
-        'word': 'Ethereum',
-        'size': 1
-      },
-      {
-        'word': 'load speed',
+        'word': 'Instability',
         'size': 4,
-      },
-    ],
-    slideContent: '<p>Slide 1 content goes here. Slide 1 content goes here. Slide 1 content goes here.</p>',
-  },
-  {
-    title: 'Resources Title 2',
-    cloud: [
-      {
-        'word': 'load speed',
-        'size': 4
-      },
-      {
-        'word': 'Gas',
-        'size': 3
-      },
-      {
-        'word': 'Ethereum',
-        'size': 2
-      },
-      {
-        'word': 'testing',
-        'size': 1
+        'url': '',
       },
       {
         'word': 'Solidity',
         'size': 2,
-      },
-    ],
-    slideContent: '<p>Slide 2 content goes here. Slide 2 content goes here. Slide 2 content goes here.</p>',
-  },
-  {
-    title: 'Resources Title 3',
-    cloud: [
-      {
-        'word': 'load speed',
-        'size': 4
+        'url': '',
       },
       {
-        'word': 'Gas',
-        'size': 3
-      },
-      {
-        'word': 'Ethereum',
-        'size': 2
-      },
-      {
-        'word': 'testing',
-        'size': 1
-      },
-      {
-        'word': 'Solidity',
+        'word': 'Deployment',
         'size': 2,
+        'url': '',
+      },
+      {
+        'word': 'Speed',
+        'size': 3,
+        'url': '',
+      },
+      {
+        'word': 'Expense',
+        'size': 4,
+        'url': '',
+      },
+      {
+        'word': 'Documentation',
+        'size': 1,
+        'url': '',
+      },
+      {
+        'word': 'Debugging',
+        'size': 2,
+        'url': '',
       },
     ],
-    slideContent: '<p>Slide 3 content goes here. Slide 3 content goes here. Slide 3 content goes here.</p>',
   },
   {
-    title: 'Resources Title 4',
+    title: 'Commonly Used Tools',
     cloud: [
       {
-        'word': 'testing',
-        'size': 3
+        'word': 'Truffle',
+        'size': 1,
+        'url': '//truffleframework.com',
       },
       {
-        'word': 'Solidity',
-        'size': 2
+        'word': 'Embark',
+        'size': 3,
+        'url': '//embark.status.im',
       },
       {
-        'word': 'Gas',
-        'size': 3
+        'word': 'Remix',
+        'size': 1,
+        'url': '//remix.ethereum.org',
       },
       {
-        'word': 'Ethereum',
-        'size': 1
+        'word': 'Ganache',
+        'size': 2,
+        'url': '//truffleframework.com/ganache',
       },
       {
-        'word': 'load speed',
+        'word': 'Ethers.js',
+        'size': 2,
+        'url': '//docs.ethers.io/ethers.js/html',
+      },
+      {
+        'word': 'Web3.js',
+        'size': 1,
+        'url': '//web3js.readthedocs.io/en/1.0/index.html',
+      },
+      {
+        'word': 'Mythril',
         'size': 4,
+        'url': '//github.com/ConsenSys/mythril',
+      },
+      {
+        'word': 'Trail of Bits',
+        'size': 4,
+        'url': '//blog.trailofbits.com/2018/03/23/use-our-suite-of-ethereum-security-tools',
+      },
+      {
+        'word': 'Code coverage',
+        'size': 4,
+        'url': '//0xproject.com/docs/sol-cov',
+      },
+      {
+        'word': 'MetaMask',
+        'size': 2,
+        'url': '//metamask.io',
+      },
+      {
+        'word': 'Infura',
+        'size': 3,
+        'url': '//infura.io',
       },
     ],
-    slideContent: '<p>Slide 4 content goes here. Slide 4 content goes here. Slide 4 content goes here. </p>',
+  },
+  {
+    title: 'Best Educational Resources',
+    cloud: [
+      {
+        'word': 'Cryptozombies',
+        'size': 1,
+        'url': '//cryptozombies.io',
+      },
+      {
+        'word': 'Ethernauts',
+        'size': 2,
+        'url': '//ethernaut.zeppelin.solutions',
+      },
+      {
+        'word': 'Gas Golf',
+        'size': 4,
+        'url': '//g.solidity.cc',
+      },
+      {
+        'word': 'Readthedocs',
+        'size': 1,
+        'url': '//solidity.readthedocs.io/en/latest',
+      },
+      {
+        'word': 'Ethresear.ch',
+        'size': 1,
+        'url': '//ethresear.ch',
+      },
+      {
+        'word': 'Mastering Ethereum',
+        'size': 4,
+        'url': '//github.com/ethereumbook/ethereumbook',
+      },
+      {
+        'word': 'Github',
+        'size': 2,
+        'url': '//github.com/ConsenSysLabs/ethereum-developer-tools-list',
+      },
+      {
+        'word': 'Cryptoeconomics',
+        'size': 4,
+        'url': '//cryptoeconomics.study',
+      },
+      {
+        'word': 'Reddit',
+        'size': 3,
+        'url': '//www.reddit.com/r/ethereum',
+      },
+      {
+        'word': 'Stackexchange',
+        'size': 3,
+        'url': '//ethereum.stackexchange.com',
+      },
+      {
+        'word': 'Vitalik',
+        'size': 2,
+        'url': '//vitalik.ca',
+      },
+    ],
+  },
+  {
+    title: 'Other Great Ideas',
+    cloud: [
+      {
+        'word': 'Mainnet Fork Testing Instance',
+        'size': 1,
+        'url': '',
+      },
+      {
+        'word': 'Solidity IDE with Visual Debugger',
+        'size': 2,
+        'url': '',
+      },
+      {
+        'word': 'Solidity Interpreter',
+        'size': 2,
+        'url': '',
+      },
+      {
+        'word': 'Better Debuggers',
+        'size': 1,
+        'url': '',
+      },
+      {
+        'word': 'Fuzz Testing Tools',
+        'size': 3,
+        'url': '',
+      },
+      {
+        'word': 'Decentralized Infura',
+        'size': 3,
+        'url': '',
+      },
+      {
+        'word': 'Event Monitoring Service',
+        'size': 4,
+        'url': '',
+      },
+      {
+        'word': 'Dappnode',
+        'size': 4,
+        'url': '//github.com/dappnode/DAppNode',
+      },
+    ],
   },
 ];
 

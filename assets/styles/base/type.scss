@@ -35,6 +35,12 @@ strong {
   color: $red;
   letter-spacing: 4px;
   line-height: 1.1;
+  transition: font-size 0.2s ease, letter-spacing 0.2s ease;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 
   @media (min-width: $desktop) {
     font-size: calculateRem(68);
