@@ -16,9 +16,30 @@ const SearchResults = (props) => {
   // sort array alphabetically
   const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
 
+  const cleanTextForParse = (text) => {
+    let strText = text;
+
+    if (strText.indexOf('<p>') !== 0 && strText.indexOf('>') === 0) {
+      strText = `<p${strText}`;
+    } else if (strText.indexOf('<p>') !== 0 && strText.indexOf('p>') === 0) {
+      strText = `<${strText}`;
+    } else if (strText.indexOf('<p>') !== 0) {
+      strText = `<p>${strText}`;
+    }
+
+    if (strText.substr(strText.length - 1, 1) === '<') {
+      strText = strText.substr(0, strText.length - 2);
+    } else if (strText.substr(strText.length - 1, 1) === '<p') {
+      strText = strText.substr(0, strText.length - 3);
+    }
+
+    return strText;
+  };
+
   const trimText = (text, strpos, length) => {
     let offset = 0;
-    let firstEclipses = '';
+    let firstEllipses = '';
+    let lastEllipses = '';
 
     if (text === null) {
       return '';
@@ -26,10 +47,16 @@ const SearchResults = (props) => {
 
     if (strpos > length && strpos !== -1 && length > 50) {
       offset = strpos - length;
-      firstEclipses = '<p>...';
+      firstEllipses = '<p>...</p>';
     }
 
-    return text.length <= length ? text : `${firstEclipses}${text.substr(offset, length + offset)}...`;
+    const replacedText = cleanTextForParse(text.substr(offset, length + offset));
+
+    if (replacedText.substr(replacedText.length - 1, 1) !== '.' && replacedText.substr(replacedText.length - 1, 1) !== '>') {
+      lastEllipses = '...';
+    }
+
+    return text.length <= length ? text : `${firstEllipses}${replacedText}${lastEllipses}`;
   };
 
   const highlightTerm = (text) => {
@@ -64,8 +91,8 @@ const SearchResults = (props) => {
                   <img src={`${publicRuntimeConfig.subDirPath}/static/img/right-chevron-icon.svg`} alt="right chevron icon" />
                 </div>
               </div>
-
-              { interview.matchingQuestionAnswerPositions.map(match => (
+              {interview.matchingQuestionAnswerPositions ?
+              interview.matchingQuestionAnswerPositions.map(match => (
                 <div>
                   <h5>{match.index + 1})&nbsp;
                     { findQuestion(match) }
@@ -74,7 +101,7 @@ const SearchResults = (props) => {
                     { Parser(processText(match.answer, match.strpos)) }
                   </div>
                 </div>
-              ))}
+              )) : ''}
             </button>
           </li>
         ))
