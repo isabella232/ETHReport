@@ -178,7 +178,6 @@ const data = [
         'size': 4,
         'url': '',
       },
-
       {
         'word': 'Mainnet Fork Testing Instance',
         'size': 1,
@@ -194,7 +193,6 @@ const data = [
         'size': 1,
         'url': '',
       },
-
       {
         'word': 'Dappnode',
         'size': 4,
@@ -215,9 +213,6 @@ const data = [
         'size': 2,
         'url': '',
       },
-
-
-
     ],
   },
 ];
