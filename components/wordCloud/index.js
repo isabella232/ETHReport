@@ -11,18 +11,18 @@ const WordCloud = props => (
     </div>
     <div className="words-wrap">
       <div>
-      { props.words.cloud.map(word => (
-        <span
-          key={word.word}
-          className={`size-${word.size}`}
-        >
-          { word.url ?
-            (<a href={word.url} target="_blank" rel="noopener noreferrer">{ word.word }</a>) :
-            <span>{ word.word }</span>
-          }
-        </span>
-        ))
-      }
+        { props.words.cloud.map(word => (
+          <span
+            key={word.word}
+            className={`size-${word.size}`}
+          >
+            { word.url ?
+              (<a href={word.url} target="_blank" rel="noopener noreferrer">{ word.word }</a>) :
+              <span>{ word.word }</span>
+            }
+          </span>
+          ))
+        }
       </div>
     </div>
   </div>

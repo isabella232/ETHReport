@@ -5,8 +5,8 @@ const PageFooter = () => (
   <div className="page-footer">
     <div className="container">
       <p>
-        Sponsored by <a href="//status.im" target="_blank">Status</a>.
-        Built by <a href="//nona.digital" target="_blank">Nona Creative</a>
+        Sponsored by <a href="//status.im" target="_blank" rel="noopener noreferrer">Status</a>.
+        Built by <a href="//nona.digital" target="_blank" rel="noopener noreferrer">Nona Creative</a>
       </p>
     </div>
   </div>
