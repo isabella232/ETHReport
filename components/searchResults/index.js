@@ -48,6 +48,7 @@ const SearchResults = (props) => {
     let lastEllipses = '';
     let startOffset = 0;
     let endOffset = 0;
+    const allowance = props.term.length + 5;
 
     if (text === null) {
       return '';
@@ -56,11 +57,12 @@ const SearchResults = (props) => {
     /**
      * We check if the position of the matched term is greater than the length of the trim
      * Then (strpos - length) would place our matched term at the beginning of the last character
-     * We add a further 50 characters as an allowance for the search term to show
+     * We add a further x characters as an allowance (based on term length)
+     * for the search term to show fully
      */
 
     if (strpos > length && strpos !== -1 && length > 50 && text.length > length) {
-      offset = strpos - (length - 50);
+      offset = strpos - (length - allowance);
       firstEllipses = '<p>...</p>';
     }
 
