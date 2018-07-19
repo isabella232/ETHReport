@@ -3,6 +3,10 @@
 .resources-wrap {
   padding: calculateRem(40) 0 calculateRem(60);
 
+  @media (min-width: $desktop) {
+    padding-top: calculateRem(80);
+  }
+
   h2 {
     margin-bottom: calculateRem(24);
 
@@ -12,7 +16,7 @@
   }
 
   .container {
-    max-width: calculateRem(1008);
+    max-width: calculateRem($big-container-width);
   }
 }
 
