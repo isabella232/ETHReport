@@ -9,6 +9,7 @@
   padding: calculateRem(48) 0 calculateRem(80);
 
   @media (min-width: $desktop) {
+    // Need important to override inline style
     background: none !important;
     overflow: hidden;
     padding-top: calculateRem(36);
