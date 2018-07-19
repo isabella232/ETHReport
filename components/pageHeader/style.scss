@@ -1,16 +1,21 @@
 @import './assets/styles/global.scss';
 
 .page-header {
+  position: relative;
   background-color: $blue;
   background-image: url('/static/img/header-bg.jpg');
   background-position: center;
   background-size: cover;
-  padding: calculateRem(24) 0;
-  text-align: center;
+  padding: calculateRem(48) 0 calculateRem(80);
 
-  .logo {
-    width: calculateRem(116);
-    margin-bottom: calculateRem(24);
+  @media (min-width: $desktop) {
+    background: none !important;
+    overflow: hidden;
+    padding-top: calculateRem(36);
+  }
+
+  .logo img {
+    width: calculateRem(80);
   }
 
   h1 {
@@ -18,29 +23,79 @@
   }
 
   p {
-    margin-bottom: calculateRem(24);
+    margin-bottom: calculateRem(32);
+
+    @media (min-width: $desktop) {
+      width: calculateRem(336);
+      margin-left: calculateRem(94);
+    }
   }
 }
 
-.page-header-nav {
-  margin-bottom: calculateRem(32);
+.inline-header {
 
-  a {
-    font-family: $secondary-font;
-    color: #fff;
-    text-decoration: none;
-    margin: 0 calculateRem(8);
-    font-size: calculateRem(20);
-    text-shadow: 0 0 11px #000;
-    padding: calculateRem(8);
-    letter-spacing: .08em;
+  .logo {
+    text-align: center;
+    margin-bottom: calculateRem(24);
+  }
 
-    @media (min-width: $tablet) {
-      font-size: calculateRem(24);
+  @media (min-width: $desktop) {
+    padding: calculateRem(280) 0 calculateRem(140);
+
+    .logo,
+    .page-header-nav {
+      display: none;
     }
 
-    &:hover {
-      text-decoration: underline;
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.page-header-bg {
+  display: none;
+
+  @media (min-width: $desktop) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+  }
+
+  @media (min-width: $desktop) {
+    min-height: calculateRem(808);
+  }
+}
+
+.sticky-header {
+  display: none;
+
+  @media (min-width: $desktop) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding: calculateRem(32) 0;
+    background: -moz-linear-gradient(top, rgba(28, 36, 73, 0.65) 1%, rgba(28, 36, 73, 0) 68%, rgba(28, 36, 73, 0) 100%);
+    background: -webkit-linear-gradient(top, rgba(28, 36, 73, 0.65) 1%, rgba(28, 36, 73, 0) 68%, rgba(28, 36, 73, 0) 100%);
+    background: linear-gradient(to bottom, rgba(28, 36, 73, 0.65) 1%, rgba(28, 36, 73, 0) 68%, rgba(28, 36, 73, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a61c2449', endColorstr='#001c2449',GradientType=0);
+
+    .container {
+      max-width: calculateRem($big-container-width);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      padding-top: calculateRem(4);
     }
   }
 }
