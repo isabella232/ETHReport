@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           <title>ETH REPORT 2018 | ETH PRIZE</title>
-          <meta name="description" content="We’ve interviewed 100+ developers to showcase the biggest opportunities in the Ethereum ecosystem" />
+          <meta name="description" content="We've interviewed 100+ developers to showcase the biggest opportunities in the Ethereum ecosystem" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="stylesheet" href="_next/static/style.css" />
           <link rel="stylesheet" type="text/css" charSet="UTF-8" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
