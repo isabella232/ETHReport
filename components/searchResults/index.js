@@ -17,17 +17,17 @@ const SearchResults = (props) => {
   const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
 
   const getStartOffset = (text) => {
-    if (text.indexOf('>') === 0) {
-      return -2;
-    } else if (text.indexOf('/p>') === 0) {
+    if (text.indexOf('/p>') === 0) {
       return 3;
+    } else if (text.indexOf('>') === 0) {
+      return 1;
     } else if (text.indexOf('p>') === 0) {
       return -1;
     } else if (text.indexOf('<p>') !== 0) {
       return false;
     }
 
-    return 0;
+    return false;
   };
 
   const getEndOffset = (text) => {
@@ -53,8 +53,8 @@ const SearchResults = (props) => {
       return '';
     }
 
-    if (strpos > length && strpos !== -1 && length > 50) {
-      offset = strpos - length;
+    if (strpos > length && strpos !== -1 && length > 50 && text.length > length) {
+      offset = strpos - (length - 50);
       firstEllipses = '<p>...</p>';
     }
 
@@ -62,7 +62,7 @@ const SearchResults = (props) => {
     startOffset = getStartOffset(offsetText);
     endOffset = getEndOffset(offsetText);
 
-    const newOffsetText = startOffset ?
+    const newOffsetText = startOffset !== false && startOffset !== -1 ?
       text.substr(offset + startOffset, length + offset + endOffset) :
       `<p>${text.substr(offset + 0, length + offset + endOffset)}`;
 
