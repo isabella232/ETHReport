@@ -132,7 +132,6 @@ class BrowseArchives extends React.Component {
 
       betterInterviews.push({
         id: i + 1,
-        tags: 'tag1, tag2, tag3',
         name: interview.Name,
         matchedIndex: -1,
         interview: interviewFormatted,
@@ -174,16 +173,6 @@ class BrowseArchives extends React.Component {
     let positionInAnswer = -1;
 
     if (matchesName) {
-      return {
-        found: true,
-        foundIndex: 0,
-        matchCount: 0,
-      };
-    }
-
-    const matchesTag = interview.tags.toLowerCase().indexOf(lcTerm) !== -1;
-
-    if (matchesTag) {
       return {
         found: true,
         foundIndex: 0,
