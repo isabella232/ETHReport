@@ -16,39 +16,12 @@ const SearchResults = (props) => {
   // sort array alphabetically
   const sortedInterviews = props.data.sort((a, b) => a.name.localeCompare(b.name));
 
-  const getStartOffset = (text) => {
-    if (text.indexOf('/p>') === 0) {
-      return 3;
-    } else if (text.indexOf('>') === 0) {
-      return 1;
-    } else if (text.indexOf('p>') === 0) {
-      return -1;
-    } else if (text.indexOf('<p>') !== 0) {
-      return false;
-    }
-
-    return false;
-  };
-
-  const getEndOffset = (text) => {
-    if (text.substr(text.length - 1, 1) === '<') {
-      return -1;
-    } else if (text.substr(text.length - 2, 2) === '<p') {
-      return -2;
-    } else if (text.substr(text.length - 3, 3) === '<p>') {
-      return -3;
-    }
-
-    return 0;
-  };
-
   const trimText = (text, strpos, length) => {
     let offset = 0;
     let firstEllipses = '';
     let lastEllipses = '';
-    let startOffset = 0;
-    let endOffset = 0;
     const allowance = props.term.length + 5;
+    const cleanText = text.replace(/<(?:.|\n)*?>/gm, '');
 
     if (text === null) {
       return '';
@@ -63,27 +36,16 @@ const SearchResults = (props) => {
 
     if (strpos > length && strpos !== -1 && length > 50 && text.length > length) {
       offset = strpos - (length - allowance);
-      firstEllipses = '<p>...</p>';
+      firstEllipses = '...';
     }
 
-    const offsetText = text.substr(offset, length + offset);
-    startOffset = getStartOffset(offsetText);
-    endOffset = getEndOffset(offsetText);
+    const offsetText = cleanText.substr(offset, length + offset);
 
-    /**
-     * We only append a p tag if we haven't found any of the tags in getStartOffset()
-     * or if we've found a '>' in the first position. Since this could be an opening
-     * or a closing tag. So we remove it and add a p tag
-     */
-    const newOffsetText = startOffset !== false && startOffset !== -1 ?
-      text.substr(offset + startOffset, length + offset + endOffset) :
-      `<p>${text.substr(offset + 0, length + offset + endOffset)}`;
-
-    if (newOffsetText.substr(newOffsetText.length - 1, 1) !== '.' && newOffsetText.substr(newOffsetText.length - 1, 1) !== '>') {
+    if (offsetText.substr(offsetText.length - 1, 1) !== '.') {
       lastEllipses = '...';
     }
 
-    return text.length <= length ? text : `${firstEllipses}${newOffsetText}${lastEllipses}`;
+    return cleanText.length <= length ? `<p>${offsetText}</p>` : `<p>${firstEllipses}${offsetText}${lastEllipses}</p>`;
   };
 
   const highlightTerm = (text) => {
