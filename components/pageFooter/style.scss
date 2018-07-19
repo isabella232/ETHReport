@@ -5,4 +5,8 @@
   padding: calculateRem(8) 0;
   text-align: center;
   font-size: calculateRem(12);
+
+  a {
+    color: $text-color;
+  }
 }

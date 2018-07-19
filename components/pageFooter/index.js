@@ -4,7 +4,10 @@ import './style.scss';
 const PageFooter = () => (
   <div className="page-footer">
     <div className="container">
-      <p>Copyright { (new Date()).getFullYear() }</p>
+      <p>
+        Sponsored by <a href="//status.im" target="_blank">Status</a>.
+        Built by <a href="//nona.digital" target="_blank">Nona Creative</a>
+      </p>
     </div>
   </div>
 );
