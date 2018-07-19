@@ -1,6 +1,6 @@
 const data = [
   {
-    title: 'Common Frustrations and Problems',
+    title: 'Frustrations <br/>and Problems',
     cloud: [
       {
         'word': 'Testing',
@@ -50,7 +50,7 @@ const data = [
     ],
   },
   {
-    title: 'Commonly Used Tools',
+    title: 'Commonly <br/>Used Tools',
     cloud: [
       {
         'word': 'Truffle',
@@ -110,7 +110,7 @@ const data = [
     ],
   },
   {
-    title: 'Best Educational Resources',
+    title: 'Educational <br/>Resources',
     cloud: [
       {
         'word': 'Cryptozombies',
@@ -118,19 +118,24 @@ const data = [
         'url': '//cryptozombies.io',
       },
       {
-        'word': 'Ethernauts',
-        'size': 2,
-        'url': '//ethernaut.zeppelin.solutions',
-      },
-      {
         'word': 'Gas Golf',
         'size': 4,
         'url': '//g.solidity.cc',
       },
       {
+        'word': 'Ethernauts',
+        'size': 2,
+        'url': '//ethernaut.zeppelin.solutions',
+      },
+      {
         'word': 'Readthedocs',
         'size': 1,
         'url': '//solidity.readthedocs.io/en/latest',
+      },
+      {
+        'word': 'Reddit',
+        'size': 3,
+        'url': '//www.reddit.com/r/ethereum',
       },
       {
         'word': 'Ethresear.ch',
@@ -152,11 +157,7 @@ const data = [
         'size': 4,
         'url': '//cryptoeconomics.study',
       },
-      {
-        'word': 'Reddit',
-        'size': 3,
-        'url': '//www.reddit.com/r/ethereum',
-      },
+
       {
         'word': 'Stackexchange',
         'size': 3,
@@ -170,25 +171,16 @@ const data = [
     ],
   },
   {
-    title: 'Other Great Ideas',
+    title: 'Other <br/>Great Ideas',
     cloud: [
       {
+        'word': 'Event Monitoring Service',
+        'size': 4,
+        'url': '',
+      },
+
+      {
         'word': 'Mainnet Fork Testing Instance',
-        'size': 1,
-        'url': '',
-      },
-      {
-        'word': 'Solidity IDE with Visual Debugger',
-        'size': 2,
-        'url': '',
-      },
-      {
-        'word': 'Solidity Interpreter',
-        'size': 2,
-        'url': '',
-      },
-      {
-        'word': 'Better Debuggers',
         'size': 1,
         'url': '',
       },
@@ -198,20 +190,34 @@ const data = [
         'url': '',
       },
       {
-        'word': 'Decentralized Infura',
-        'size': 3,
+        'word': 'Better Debuggers',
+        'size': 1,
         'url': '',
       },
-      {
-        'word': 'Event Monitoring Service',
-        'size': 4,
-        'url': '',
-      },
+
       {
         'word': 'Dappnode',
         'size': 4,
         'url': '//github.com/dappnode/DAppNode',
       },
+      {
+        'word': 'Solidity IDE with Visual Debugger',
+        'size': 2,
+        'url': '',
+      },
+      {
+        'word': 'Decentralized Infura',
+        'size': 3,
+        'url': '',
+      },
+      {
+        'word': 'Solidity Interpreter',
+        'size': 2,
+        'url': '',
+      },
+
+
+
     ],
   },
 ];
