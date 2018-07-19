@@ -53,6 +53,12 @@ const SearchResults = (props) => {
       return '';
     }
 
+    /**
+     * We check if the position of the matched term is greater than the length of the trim
+     * Then (strpos - length) would place our matched term at the beginning of the last character
+     * We add a further 50 characters as an allowance for the search term to show
+     */
+
     if (strpos > length && strpos !== -1 && length > 50 && text.length > length) {
       offset = strpos - (length - 50);
       firstEllipses = '<p>...</p>';
@@ -62,6 +68,11 @@ const SearchResults = (props) => {
     startOffset = getStartOffset(offsetText);
     endOffset = getEndOffset(offsetText);
 
+    /**
+     * We only append a p tag if we haven't found any of the tags in getStartOffset()
+     * or if we've found a '>' in the first position. Since this could be an opening
+     * or a closing tag. So we remove it and add a p tag
+     */
     const newOffsetText = startOffset !== false && startOffset !== -1 ?
       text.substr(offset + startOffset, length + offset + endOffset) :
       `<p>${text.substr(offset + 0, length + offset + endOffset)}`;
