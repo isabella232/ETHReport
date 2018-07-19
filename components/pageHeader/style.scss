@@ -30,10 +30,14 @@
     color: #fff;
     text-decoration: none;
     margin: 0 calculateRem(8);
-    font-size: calculateRem(17);
+    font-size: calculateRem(20);
     text-shadow: 0 0 11px #000;
     padding: calculateRem(8);
     letter-spacing: .08em;
+
+    @media (min-width: $tablet) {
+      font-size: calculateRem(24);
+    }
 
     &:hover {
       text-decoration: underline;
