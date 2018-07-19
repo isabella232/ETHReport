@@ -1,20 +1,20 @@
 @import './assets/styles/global.scss';
 
 .wordcloud {
-  padding: calculateRem(32) 0 calculateRem(40) calculateRem(24);
+  padding: calculateRem(32) 0 calculateRem(40) calculateRem(40);
   outline: none;
   background-color: $navy;
   display: flex;
   flex-direction: column;
 
   @media (min-width: $tablet) {
-    padding-top: calculateRem(40);
+    padding-top: calculateRem(48);
   }
 
   h3 {
     @include hasRedUnderline;
     position: relative;
-    margin: calculateRem(-24) 0 calculateRem(40) calculateRem(40);
+    margin: calculateRem(-24) 0 calculateRem(48) calculateRem(48);
     color: #fff;
     font-family: $secondary-font;
     font-size: calculateRem(22);
@@ -55,6 +55,10 @@
     flex-grow: 1;
     text-align: center;
     padding-right: calculateRem(24);
+
+    @media (min-width: $tablet) {
+      padding-right: calculateRem(48);
+    }
 
     > div > span {
       display: inline-block;

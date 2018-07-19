@@ -12,7 +12,7 @@
   }
 
   .container {
-    max-width: calculateRem(846);
+    max-width: calculateRem(1008);
   }
 }
 
@@ -24,5 +24,9 @@
   @media (min-width: $tablet) {
     grid-gap: calculateRem(16);
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $tablet) {
+    grid-gap: calculateRem(28);
   }
 }
