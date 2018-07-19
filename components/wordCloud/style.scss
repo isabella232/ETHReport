@@ -69,18 +69,38 @@
 
       &.size-1 {
         font-size: calculateRem(30);
+
+        > span:hover,
+        > a:hover {
+          color: $red;
+        }
       }
 
       &.size-2 {
         font-size: calculateRem(25);
+
+        > span:hover,
+        > a:hover {
+          color: $orange;
+        }
       }
 
       &.size-3 {
         font-size: calculateRem(20);
+
+        > span:hover,
+        > a:hover {
+          color: $turquoise;
+        }
       }
 
       &.size-4 {
         font-size: calculateRem(15);
+
+        > span:hover,
+        > a:hover {
+          color: #fff;
+        }
       }
 
       &:hover {
