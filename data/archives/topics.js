@@ -19,7 +19,6 @@ const data = [
   'consensus',
   'NFT',
   'compiler',
-  'protocol',
   'signature',
   'hash',
   'testing',
