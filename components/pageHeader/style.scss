@@ -21,6 +21,10 @@
 
   h1 {
     margin-bottom: calculateRem(24);
+
+    @media (min-width: $desktop) {
+      margin-bottom: 0;
+    }
   }
 
   p {
@@ -28,7 +32,7 @@
 
     @media (min-width: $desktop) {
       width: calculateRem(336);
-      margin-left: calculateRem(224);
+      margin-left: calculateRem(204);
     }
   }
 }
@@ -41,7 +45,7 @@
   }
 
   @media (min-width: $desktop) {
-    padding: calculateRem(280) 0 calculateRem(140);
+    padding: calculateRem(180) 0 calculateRem(140);
 
     .logo,
     .page-header-nav {
