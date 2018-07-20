@@ -112,6 +112,8 @@ class BrowseArchives extends React.Component {
     });
   }
 
+
+  // used as an intermediary to give us an easy to search through JSON object
   transformInterviews = (interviews) => {
     const { length } = Object.keys(interviews);
     const betterInterviews = [];
