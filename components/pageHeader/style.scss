@@ -28,7 +28,7 @@
 
     @media (min-width: $desktop) {
       width: calculateRem(336);
-      margin-left: calculateRem(94);
+      margin-left: calculateRem(224);
     }
   }
 }
@@ -72,11 +72,40 @@
   }
 }
 
-.sticky-header {
+.headroom {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   display: none;
 
   @media (min-width: $desktop) {
     display: block;
+  }
+}
+
+.headroom--unfixed {
+  position: relative;
+  transform: translateY(0);
+}
+
+.headroom--scrolled {
+  transition: transform 500ms ease-in-out;
+}
+
+.headroom--unpinned {
+  position: fixed;
+  transform: translateY(-100%);
+}
+
+.headroom--pinned {
+  position: fixed;
+  transform: translateY(0%);
+}
+
+.sticky-header {
+
+  @media (min-width: $desktop) {
     width: 100%;
     z-index: 1;
     padding: calculateRem(32) 0;
