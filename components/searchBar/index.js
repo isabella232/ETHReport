@@ -6,7 +6,10 @@ import './style.scss';
 const { publicRuntimeConfig } = getConfig();
 
 const SearchBar = props => (
-  <div className="search-bar" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}>
+  <div
+    className={`search-bar ${props.isSearchActive ? 'search-active': ''}`}
+    style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}
+  >
     <div className="container">
       <h3 className="main-heading" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/heading-textured-bg.jpg)` }}>
         Archives

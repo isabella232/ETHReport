@@ -5,7 +5,7 @@
   background-image: url('/static/img/header-bg.jpg');
   background-position: center;
   background-size: cover;
-  margin-bottom: calculateRem(56);
+  margin-bottom: calculateRem(40);
   height: calculateRem(164);
   padding-top: calculateRem(52);
 
@@ -20,6 +20,10 @@
     @media (min-width: $desktop) {
       margin-bottom: calculateRem(32);
     }
+  }
+
+  &.search-active {
+    margin-bottom: calculateRem(92);
   }
 }
 
