@@ -28,14 +28,17 @@
 
 .browse-content-right {
 
-  @media (min-width: $monitor) {
+  @media (min-width: $desktop) {
     display: flex;
     flex-direction: column;
-    width: calculateRem($container-width);
-    padding: 0 calculateRem($container-padding);
 
     .interviews-wrap {
       order: 1;
     }
+  }
+
+  @media (min-width: $monitor) {
+    width: calculateRem($container-width);
+    padding: 0 calculateRem($container-padding);
   }
 }
