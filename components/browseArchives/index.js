@@ -7,7 +7,7 @@ import TopicsList from '../topicsList';
 import ProjectsList from '../projectsList';
 import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
-import { InterviewsData, Questions } from '../../data/archives/interviews';
+import { InterviewData, Questions } from '../../data/archives/interviews';
 import './style.scss';
 
 class BrowseArchives extends React.Component {
@@ -22,7 +22,7 @@ class BrowseArchives extends React.Component {
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
       isSearchActive: false,
-      interviewData: this.transformInterviews(InterviewsData),
+      interviewData: this.transformInterviews(InterviewData),
       matchedCount: 0,
     };
 
@@ -112,6 +112,7 @@ class BrowseArchives extends React.Component {
     });
   }
 
+  // used as an intermediary to give us an easy to search through JSON object
   transformInterviews = (interviews) => {
     const { length } = Object.keys(interviews);
     const betterInterviews = [];
@@ -121,18 +122,18 @@ class BrowseArchives extends React.Component {
       const qKeys = Object.keys(interview);
       const interviewFormatted = [];
 
-      qKeys.forEach((key, index) => {
-        if (key !== 'Name' && interview[key] !== null) {
+      qKeys.forEach((key) => {
+        if (key !== 'name' && interview[key] !== null && interview[key].answer !== null && interview[key].answer !== '') {
           interviewFormatted.push({
-            question: index,
-            answer: interview[key],
+            question: key,
+            answer: interview[key].answer,
           });
         }
       });
 
       betterInterviews.push({
         id: i + 1,
-        name: interview.Name,
+        name: interview.name,
         matchedIndex: -1,
         interview: interviewFormatted,
       });
