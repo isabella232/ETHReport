@@ -8,7 +8,7 @@ const { publicRuntimeConfig } = getConfig();
 
 const PageHeader = () => (
   <div className="page-header" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}>
-    <Headroom disableInlineStyles downTolerance={120} upTolerance={30}>
+    <Headroom disableInlineStyles downTolerance={120}>
       <div className="sticky-header">
         <div className="container">
           <div className="logo">
