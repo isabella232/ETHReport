@@ -1,61 +1,57 @@
 @import './assets/styles/global.scss';
 
-.search-results {
-  margin-top: calculateRem(32);
+.search-results li {
+  margin-bottom: calculateRem(32);
 
-  li {
-    margin-bottom: calculateRem(32);
+  button {
+    text-align: left;
+    width: 100%;
+    padding: 0;
 
-    button {
-      text-align: left;
-      width: 100%;
-      padding: 0;
+    &:hover h3 {
+      text-decoration: underline;
 
-      &:hover h3 {
-        text-decoration: underline;
-
-        &.matched-name::before {
-          display: none;
-        }
+      &.matched-name::before {
+        display: none;
       }
+    }
 
-      h3 {
-        color: #fff;
-        font-size: calculateRem(24);
-        display: inline-block;
-        margin-bottom: calculateRem(12);
+    h3 {
+      color: #fff;
+      font-size: calculateRem(24);
+      display: inline-block;
+      margin-bottom: calculateRem(12);
 
-        &.matched-name {
-          @include hasRedUnderline;
-          position: relative;
-        }
+      &.matched-name {
+        @include hasRedUnderline;
+        position: relative;
       }
+    }
 
-      h5 {
-        color: #fff;
-        font-size: calculateRem(16);
-        margin-bottom: calculateRem(8);
-      }
+    h5 {
+      color: #fff;
+      font-size: calculateRem(16);
+      margin-bottom: calculateRem(8);
+    }
 
-      p {
-        color: hsla(0, 0, 100, .6);
-        font-size: calculateRem(14);
-        line-height: 1.6;
+    p {
+      color: hsla(0, 0, 100, .6);
+      font-size: calculateRem(14);
+      line-height: 1.6;
 
-        span {
-          position: relative;
+      span {
+        position: relative;
 
-          &::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -2%;
-            height: 120%;
-            width: 104%;
-            background-color: $red;
-            color: $navy;
-            z-index: -1;
-          }
+        &::before {
+          content: '';
+          position: absolute;
+          top: -10%;
+          left: -2%;
+          height: 120%;
+          width: 104%;
+          background-color: $red;
+          color: $navy;
+          z-index: -1;
         }
       }
     }

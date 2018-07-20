@@ -3,7 +3,7 @@
 .mob-interviews-link {
   display: flex;
   justify-content: space-between;
-  margin-bottom: calculateRem(24);
+  margin-bottom: calculateRem(32);
 
   @media (min-width: $desktop) {
     display: none;

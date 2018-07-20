@@ -49,6 +49,7 @@
     p {
       padding-left: calculateRem(16);
       position: relative;
+      margin-bottom: calculateRem(10);
 
       &::before {
         content: '\00B7';
