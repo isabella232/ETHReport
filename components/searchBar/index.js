@@ -7,7 +7,7 @@ const { publicRuntimeConfig } = getConfig();
 
 const SearchBar = props => (
   <div
-    className={`search-bar ${props.isSearchActive ? 'search-active': ''}`}
+    className={`search-bar ${props.isSearchActive ? 'search-active' : ''}`}
     style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}
   >
     <div className="container">
