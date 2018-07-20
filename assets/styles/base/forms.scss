@@ -4,3 +4,8 @@ input,
 button {
   font-family: $primary-font;
 }
+
+input[type="search"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
