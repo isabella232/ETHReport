@@ -7,7 +7,8 @@ import TopicsList from '../topicsList';
 import ProjectsList from '../projectsList';
 import SearchBar from '../searchBar';
 import SearchResults from '../searchResults';
-import { InterviewData, Questions } from '../../data/archives/interviews';
+import { Questions } from '../../data/archives/questions';
+import InterviewData from '../../data/archives/cleanInterviews.json';
 import './style.scss';
 
 class BrowseArchives extends React.Component {
@@ -22,7 +23,7 @@ class BrowseArchives extends React.Component {
       isInterviewsListModalOpen: false,
       activeSingleInterviewId: 1,
       isSearchActive: false,
-      interviewData: this.transformInterviews(InterviewData),
+      interviewData: InterviewData,
       matchedCount: 0,
     };
 
@@ -31,7 +32,6 @@ class BrowseArchives extends React.Component {
     this.toggleInterviewsListModal = this.toggleInterviewsListModal.bind(this);
     this.setSearchTerm = this.setSearchTerm.bind(this);
     this.clearSearchInput = this.clearSearchInput.bind(this);
-    this.transformInterviews = this.transformInterviews.bind(this);
     this.termIsInInterview = this.termIsInInterview.bind(this);
     this.getSearchResultsDebounce = this.getSearchResultsDebounce.bind(this);
   }
@@ -110,36 +110,6 @@ class BrowseArchives extends React.Component {
       matchedCount: 0,
       searchResults: [],
     });
-  }
-
-  // used as an intermediary to give us an easy to search through JSON object
-  transformInterviews = (interviews) => {
-    const { length } = Object.keys(interviews);
-    const betterInterviews = [];
-
-    for (let i = 0; i < length; i++) {
-      const interview = interviews[i];
-      const qKeys = Object.keys(interview);
-      const interviewFormatted = [];
-
-      qKeys.forEach((key) => {
-        if (key !== 'name' && interview[key] !== null && interview[key].answer !== null && interview[key].answer !== '') {
-          interviewFormatted.push({
-            question: key,
-            answer: interview[key].answer,
-          });
-        }
-      });
-
-      betterInterviews.push({
-        id: i + 1,
-        name: interview.name,
-        matchedIndex: -1,
-        interview: interviewFormatted,
-      });
-    }
-
-    return betterInterviews;
   }
 
   toggleInterviewsListModal = () => {
