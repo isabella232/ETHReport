@@ -115,7 +115,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a61c2449', endColorstr='#001c2449', GradientType=0);
 
     .container {
-      max-width: calculateRem($big-container-width);
+      max-width: calculateRem($lrg-container-width);
       display: flex;
       justify-content: space-between;
       align-items: center;
