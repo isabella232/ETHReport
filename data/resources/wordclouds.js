@@ -13,7 +13,7 @@ const data = [
         'url': '',
       },
       {
-        'word': 'Instability',
+        'word': 'Scaling',
         'size': 4,
         'url': '',
       },

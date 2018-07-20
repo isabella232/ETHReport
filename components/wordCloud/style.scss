@@ -137,6 +137,15 @@
       > a {
         text-decoration: none;
 
+        @media (max-width: $toDesktop) {
+          @include hasRedUnderline;
+          position: relative;
+
+          &::before {
+            background-color: $orange;
+          }
+        }
+
         &:hover {
           text-decoration: underline;
         }
