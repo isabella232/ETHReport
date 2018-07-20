@@ -1,14 +1,24 @@
 const data = [
-  'Ethereum Foundation',
-  'Ethereum Community Fund',
-  'Solidity',
-  'Go-ethereum',
+  'Ethereum',
+  'Geth',
+  'Truffle',
+  'Infura',
+  'MetaMask',
   'Parity',
   'Remix',
+  'Mythril',
+  'Casper',
+  'Plasma',
+  'Status',
+  'Embark',
   'Swarm',
-  'Vyper',
   'eWASM',
-  'Casper/PoS'
+  'Sharding',
+  'State channels',
+  'Gitcoin',
+  'Augur',
+  'Vyper',
+  'Bamboo',
 ];
 
 export default data;
