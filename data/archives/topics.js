@@ -6,7 +6,6 @@ const data = [
   'event',
   'network',
   'documentation',
-  'usability',
   'blockchain',
   'client',
   'bounty',
