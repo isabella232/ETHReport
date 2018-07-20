@@ -44,7 +44,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-anchor-link-smooth-scroll": "^1.0.10",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "react-headroom": "^2.2.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
