@@ -4,13 +4,14 @@
   "description": "ETHPrize website",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "serve": "next build && next start",
-    "prod-build": "next build && next export && touch out/.nojekyll",
+    "dev": "npm run transform && next",
+    "build": "npm run transform && next build",
+    "start": "npm run transform && next start",
+    "serve": "npm run transform && next build && next start",
+    "prod-build": "npm run transform && next build && next export && touch out/.nojekyll",
     "deploy": "deploy-to-git && rm -rf out",
-    "lint": "eslint \"components/**/*.js\" \"pages/*.js\"\"data/**/*.js\""
+    "lint": "eslint \"components/**/*.js\" \"pages/*.js\"\"data/**/*.js\"",
+    "transform": "node bin/transform-json"
   },
   "config": {
     "deployToGit": {
