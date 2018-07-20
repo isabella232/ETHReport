@@ -1,5 +1,6 @@
 import React from 'react';
 import getConfig from 'next/config';
+import Headroom from 'react-headroom';
 import PageHeaderNav from '../pageHeaderNav';
 import './style.scss';
 
@@ -7,14 +8,16 @@ const { publicRuntimeConfig } = getConfig();
 
 const PageHeader = () => (
   <div className="page-header" style={{ backgroundImage: `url(${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg)` }}>
-    <div className="sticky-header">
-      <div className="container">
-        <div className="logo">
-          <img src={`${publicRuntimeConfig.subDirPath}/static/img/ETHPrize-logo.png`} alt="ETHPrize logo" />
+    <Headroom disableInlineStyles downTolerance={120}>
+      <div className="sticky-header">
+        <div className="container">
+          <div className="logo">
+            <img src={`${publicRuntimeConfig.subDirPath}/static/img/ETHPrize-logo.png`} alt="ETHPrize logo" />
+          </div>
+          <PageHeaderNav />
         </div>
-        <PageHeaderNav />
       </div>
-    </div>
+    </Headroom>
     <img className="page-header-bg" src={`${publicRuntimeConfig.subDirPath}/static/img/header-bg.jpg`} alt="Header background" />
     <div className="inline-header">
       <div className="container">
