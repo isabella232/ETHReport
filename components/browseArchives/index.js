@@ -118,7 +118,7 @@ class BrowseArchives extends React.Component {
 
     for (let i = 0; i < length; i++) {
       const interview = interviews[i];
-      const qKeys = Object.keys(interview); // name, who_what->question
+      const qKeys = Object.keys(interview);
       const interviewFormatted = [];
 
       qKeys.forEach((key) => {
