@@ -28,7 +28,7 @@
     "html-react-parser": "^0.4.5",
     "lodash": "^4.17.10",
     "next": "^6.0.3",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.9.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-anchor-link-smooth-scroll": "^1.0.10",
