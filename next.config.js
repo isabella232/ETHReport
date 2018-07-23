@@ -1,7 +1,7 @@
 const withSass = require('@zeit/next-sass');
 
 const dev = process && process.env && process.env.NODE_ENV === 'development';
-const subDirPath = dev ? '' : '/nona-creative.github.io-ETHprize';
+const subDirPath = dev ? '' : '/ETHReport';
 
 module.exports =
   withSass({

@@ -2,12 +2,14 @@
 ETHPrize single page React website
 
 ## Setting up
-- `git clone git@github.com:Nona-Creative/ETHPrize.git`
+- `git clone git@github.com:status-im/ETHPrize.git`
 - `npm install`
 - `npm run dev` runs the site at `localhost:3000`
 - `yarn lint` runs the eslinter
 
-## Deploy to staging
-- `npm run deploy` to deploy
-- This pushes the compiled code to a second repo at `https://github.com/Nona-Creative/nona-creative.github.io-ETHprize`
-- View staging Github page at `https://nona-creative.github.io/nona-creative.github.io-ETHprize`
+## Deploy
+
+- `npm run prod-build` to build to the `out` directory
+- `npm run gh-publish` to deploy to GitHub Pages
+- This pushes the compiled code to the `gh-pages` branch
+- View staging Github page at: https://status-im.github.io/ETHReport/
