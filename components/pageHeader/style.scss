@@ -35,6 +35,15 @@
       margin-left: calculateRem(204);
     }
   }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .inline-header {

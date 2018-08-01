@@ -32,6 +32,9 @@ const PageHeader = () => (
             We&rsquo;ve interviewed 100+ developers to showcase the biggest opportunities in the
             Ethereum ecosystem
           </p>
+          <p>
+            Find out more on <a href="https://our.status.im/tag/ethprize/" target="_blank">our blog</a>.
+          </p>
         </div>
         <PageHeaderNav />
       </div>
