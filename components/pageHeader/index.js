@@ -33,7 +33,7 @@ const PageHeader = () => (
             Ethereum ecosystem
           </p>
           <p>
-            Find out more on <a href="https://our.status.im/tag/ethprize/" target="_blank">our blog</a>.
+            Find out more on <a href="https://our.status.im/tag/ethprize/">our blog</a>.
           </p>
         </div>
         <PageHeaderNav />
