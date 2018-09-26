@@ -33,7 +33,8 @@ const PageHeader = () => (
             Ethereum ecosystem
           </p>
           <p>
-            Find out more on <a href="https://our.status.im/tag/ethprize/">our blog</a>.
+            Help us <a href="https://goo.gl/forms/lw5i2Ku9F0tMBWPD3">answer these questions</a> to be included on this site and add your voice
+            to the distributed future!
           </p>
         </div>
         <PageHeaderNav />
